@@ -80,10 +80,10 @@ public class NewsAssembler {
         result.setStartTime(DateUtils.convertStrToDate(startTime, DateUtils.DATE_TIME_PATTERN));
         String endTime = newsDTO.getEndTime();
         result.setEndTime(DateUtils.convertStrToDate(endTime, DateUtils.DATE_TIME_PATTERN));
+        result.setDisplay(newsDTO.getDisplay());
         /*
         result.setPosition (newsDTO.getPosition());
         result.setPageView (newsDTO.getPageView());
-        result.setDisplay (newsDTO.getDisplay());
         result.setAdminId (newsDTO.getAdminId());
         */
         //20170118pm
