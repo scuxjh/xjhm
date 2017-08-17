@@ -15,6 +15,8 @@
 <!-- 20170119pm -->
 <link rel="stylesheet" href="${contextPath}/css/main-custom.css"/>
 <link rel="stylesheet" href="${contextPath}/css/index-custom.css"/>
+<!-- 20170816pm -->
+<link rel="stylesheet" href="${contextPath}/lib/bootstrap/summernote/0.8.7/summernote.css"/>
 
 <%-- js 默认就有 type="text/javascript" --%>
 <script  src="${contextPath}/lib/jquery-1.8.3.min.js"></script>
@@ -31,6 +33,9 @@
 <script  src="${contextPath}/lib/validateForm/validateForm.js"></script>
 <!-- 20170118pm -->
 <script  src="${contextPath}/js/domain/taskOperate.js"></script>
+<!-- 20170816pm -->
+<script  src="${contextPath}/lib/bootstrap/summernote/0.8.7/summernote.min.js"></script>
+<script  src="${contextPath}/lib/bootstrap/summernote/0.8.7/lang/summernote-zh-CN.js"></script>
 <script>
 	$.ajaxSetup({cache:false});
 </script>

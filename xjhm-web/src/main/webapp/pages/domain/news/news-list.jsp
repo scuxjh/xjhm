@@ -149,7 +149,8 @@ $(function (){
        1.new.
  */
 var addNews = function($grid, newsId){
-	var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	//var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
     	$dialog.find(".modal-title").html("新增");
@@ -159,10 +160,28 @@ var addNews = function($grid, newsId){
     		var $form = $dialog.find('form');
     		//20170118pm
     		initForm($form);
+    		
+    		//20170816pm
+    		var $content = $form.find("#contentID");
+	    	//$content.summernote({height:200,lang:'zh-CN'});//20170816pm
+	    	var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
+	    	$content.summernote({height:200,lang:'zh-CN',
+	    		callbacks: {
+	    			onImageUpload: function(files) {
+	    				console.log("onImageUpload....,files:"+files);
+	    				$content.summernote('insertImage', imageUrl);
+	    			}
+	    		}});//20170816pm
+	    	
+	    	/*$content.on('summernote.image.upload', function(we, files) {
+	    	// upload image to server and create imgNode...
+	    		$content.summernote('insertNode', imgNode);
+	    	});*/
+    		
     		$dialog.modal({
-                keyboard:true
+                keyboard:false
             }).on({
-                'hidden.bs.modal': function(){$(this).remove();}
+                //'hidden.bs.modal': function(){$(this).remove();}
             });
     		//console.log("1111,in addNews,newsId:"+newsId);
     		if(newsId) appendData2Form("news", $dialog, newsId);
