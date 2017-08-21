@@ -16,7 +16,8 @@
                                 <module>xjhm-facade-impl</module>
                                 <module>xjhm-infra</module>
                                 <module>xjhm-web</module>
-                        </modules>
+                                <module>xjhweb-web</module>
+    </modules>
 
     <properties>
         <!-- version config -->
