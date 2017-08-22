@@ -16,16 +16,16 @@
         <project.type>infra</project.type>  
         <base.package>com.scu.xjhm.infra</base.package> 
     </properties>  
-    <dependencies> 
-        <dependency> 
-            <groupId>com.scu</groupId>  
-            <artifactId>xjhm-core</artifactId>  
-            <version>${project.parent.version}</version> 
-        </dependency>  
+    <dependencies>   
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.scu</groupId>
+        	<artifactId>xjhm-core</artifactId>
+        	<version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies> 
 </project>

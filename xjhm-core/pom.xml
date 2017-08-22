@@ -41,13 +41,6 @@
             <groupId>org.openkoala.koalacommons</groupId>  
             <artifactId>koala-commons-domain</artifactId> 
         </dependency>  
-        <!-- 加入CONF依赖 -->  
-        <dependency> 
-            <groupId>com.scu</groupId>  
-            <artifactId>xjhm-conf</artifactId>  
-            <version>${project.parent.version}</version>  
-            <type>test-jar</type>  
-            <scope>test</scope> 
-        </dependency> 
+        <!-- 加入CONF依赖 -->   
     </dependencies> 
 </project>

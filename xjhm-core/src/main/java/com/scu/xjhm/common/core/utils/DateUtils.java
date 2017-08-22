@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletRequest;
 
 //import org.apache.commons.lang.StringUtils;
 
@@ -778,7 +778,7 @@ public class DateUtils {
 	 * 
 	 * @param attributeName
 	 * @param request
-	 */
+	 
 	public static void setYearSelect(String attributeName, HttpServletRequest request) {
 		String currYear = getYear();
 		ArrayList<Map<String, String>> timeList = new ArrayList<Map<String, String>>();
@@ -790,14 +790,14 @@ public class DateUtils {
 			timeList.add(timeSetpForm);
 		}
 		request.setAttribute(attributeName, timeList);
-	}
+	}*/
 
 	/**
 	 * 设置月列表
 	 * 
 	 * @param attributeName
 	 * @param request
-	 */
+	 
 	public static void setMonthSelect(String attributeName, HttpServletRequest request) {
 		ArrayList<Map<String, String>> timeList = new ArrayList<Map<String, String>>();
 		for (int i = 1; i <= 12; i++) {
@@ -807,7 +807,7 @@ public class DateUtils {
 			timeList.add(timeSetpForm);
 		}
 		request.setAttribute(attributeName, timeList);
-	}
+	}*/
 
 	/**
 	 * 根据时间 改变字符串（时间）格式 如：yyyy-MM-dd HH:mm:SS 转为 yyyy-MM-dd
