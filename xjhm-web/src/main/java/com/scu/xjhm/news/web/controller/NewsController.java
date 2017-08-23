@@ -37,7 +37,7 @@ public class NewsController {
 	@ResponseBody
 	@RequestMapping("/add")
 	public InvokeResult add(NewsDTO newsDTO) {
-		LOGGER.info("1111,in add,newsDTO.getNewsTitle:"+newsDTO.getNewsTitle()+",startTime:"+newsDTO.getStartTime()+",categoryId:"+newsDTO.getCategoryId());
+		LOGGER.info("1111,in add,newsDTO.getNewsTitle:"+newsDTO.getNewsTitle()+",startTime:"+newsDTO.getStartTime()+",categoryId:"+newsDTO.getCategoryId()+",display:"+newsDTO.getDisplay());
 		return newsFacade.createNews(newsDTO);
 	}
 	/**

@@ -158,7 +158,7 @@ var addNews = function($grid, newsId){
     	$.get(url).done(function(html){
     		$dialog.find("form").append($(html));
     		var $form = $dialog.find('form');
-    		//20170118pm
+    		//调用taskOperate.js共用方法 ，初始化任务表单   20170118pm
     		initForm($form);
     		
     		//20170816pm

@@ -21,15 +21,15 @@
                         <span class="required">*</span>
                     </div>
                 </div>
-				<label class="col-md-2 control-label" for="name">是否前台显示:</label>
+				<label class="col-md-2 control-label" for="name">是否前台显示:</label><!-- 默认为否 value=0 -->
                 <div class="col-md-2">
 					<label class="radio-inline">
-                    	<input type="radio" id="display-radio-true" name="display-radio" value="true">是
+                    	<input type="radio" id="display-1" name="display" value="1">是
                     </label>
 		            <label class="radio-inline">
-        		    	<input type="radio" id="display-radio-false" name="display-radio" value="false" checked="checked">否
+        		    	<input type="radio" id="display-0" name="display" value="0" checked="checked">否
                 	</label>
-                    <input type='hidden' name='display-radio' value="false" >
+                    <input type='hidden' class="hiddenRadio" name='display' id='displayID' value="0" >
                     <span class="required">*</span>
                  </div>
 			</div>

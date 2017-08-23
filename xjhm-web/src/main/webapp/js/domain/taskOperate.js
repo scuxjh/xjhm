@@ -306,6 +306,8 @@ var viewTaskbook = function(id, curTeachClassId){
    @version
    20170119nt
    		1.new。
+   20170817nt
+   		1.增加单选按钮radio的数据回显功能。
  */
 var appendData2Form = function(requestMapping, $dialog, id, viewMode){
     var $form = $dialog.find('form');
@@ -321,6 +323,14 @@ var appendData2Form = function(requestMapping, $dialog, id, viewMode){
 				$elm.setValue(json[index]);
 			}else{
 				$elm.val(json[index]);
+			}
+			if($elm.hasClass('hiddenRadio')){//单选按钮radio的数据回显 20170817pm
+				console.log("hiddenRadio,");
+				var name = $elm.attr("name");
+				var radioValue = $elm.val();
+				var radioId = name+"-"+radioValue;
+				console.log("radioId:"+radioId);
+				$elm.parent().find("input[type='radio'][id='"+radioId+"']").attr("checked", "checked");
 			}
 		}
 		if(viewMode)  initViewMode($dialog);//20160802pm
@@ -372,7 +382,7 @@ var initViewMode = function($dialog){
 	//20160820nt
 	$dialog.find(":radio").each(function(index, element){
 		var $element = $(element);
-		$element.parent().children("span.required").remove();//20160911am
+		$element.parent().parent().children("span.required").remove();//20160911am
 		$(element).attr("readonly", "readonly");
 		$(element).attr("disabled", "disabled");
 	});
