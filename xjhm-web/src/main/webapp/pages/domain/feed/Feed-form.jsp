@@ -4,7 +4,7 @@
     	<div class="form-group">
         	<div class="row">
             	<label class="col-md-2 control-label" for="name">反馈标题:</label>
-                <div class="col-md-6">
+                <div class="col-md-10">
                 	<input type="text" class="form-control" id="feedTitleID" name="feedTitle" value="" dataType="Require" placeholder="反馈标题"><span class="required">*</span>
                     <input type="hidden" id="idID" name="id" />
 				</div>
@@ -21,22 +21,43 @@
                         <span class="required">*</span>
                     </div>
                 </div>
-			<label class="col-md-2 control-label" for="name">发布时间:</label>
+                <label class="col-md-2 control-label" for="name">是否前台显示:</label><!-- 默认为否 value=0 -->
+                <div class="col-md-2">
+					<label class="radio-inline">
+                    	<input type="radio" id="display-1" name="display" value="1" >是
+                    </label>
+		            <label class="radio-inline">
+        		    	<input type="radio" id="display-0" name="display" value="0" checked="checked" >否
+                	</label>
+            
+                    <input type='hidden' class="hiddenRadio" name='display' id='displayID' value="0" >
+                    <span class="required">*</span>
+			
+			</div>
+		</div>
+		</div>
+                    <!-- 第3行 -->
+                    
+                    <div class="form-group">
+                    	<div class="row">
+                    	<label class="col-md-2 control-label" for="name">发布时间:</label>
             <div class="col-md-4">
 				<div class="input-group date form_datetime">
 					<input type="text" class="form-control" name="startTime" id="startTimeID" size="16" value="" style="width:100%;">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
 				</div>
             </div>
-			</div>
-		</div>
-                    <!-- 第3行 -->
+                    	</div>
+                    </div>
+                    <!-- 第4行 -->
+                    
                     <div class="form-group">
                     	<div class="row">
-                    		<label class="col-md-2 control-label" for="name">反馈内容:</label>
+                    	<label class="col-md-2 control-label" for="name">反馈内容:</label>
                         	<div class="col-md-10">
-                            	<textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" dataType="Require"></textarea>
-                            	<span class="required">*</span>
+                            	<!--  <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" dataType="Require"></textarea>
+                            	<span class="required">*</span>-->
+                            	<div name="content" id="contentID"></div>
                         	</div>
                     	</div>
                     </div>

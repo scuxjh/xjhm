@@ -45,7 +45,9 @@ public class FeedFacadeImpl implements FeedFacade {
 	
 	public InvokeResult creatFeed(FeedDTO feedDTO) {
 		application.creatFeed(FeedAssembler.toEntity(feedDTO));
+		System.out.println();
 		return InvokeResult.success();
+		
 	}
 	
 	public InvokeResult updateFeed(FeedDTO feedDTO) {

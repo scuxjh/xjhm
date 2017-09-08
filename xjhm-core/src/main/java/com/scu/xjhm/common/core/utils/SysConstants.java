@@ -19,4 +19,5 @@ public class SysConstants {
 	public static final String ROLE_NAME_ADMIN = "超级管理员",ROLE_NAME_SYSADMIN="系统管理员",ROLE_NAME_TEACHADMIN="教学平台管理员",ROLE_NAME_TEACHER="教师",ROLE_NAME_STUDENT="学生";
 	//数据字典key值 .20170119nt
 	public static final String DICT_NEWS_CATETORY = "news.CATEGORY";
+	public static final String DICT_FEED_CATETORY = "feed.CATEGORY";
 }

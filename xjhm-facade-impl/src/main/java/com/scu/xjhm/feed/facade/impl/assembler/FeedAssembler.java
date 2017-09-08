@@ -63,7 +63,7 @@ public class FeedAssembler {
 	 		LOGGER.info("1111,in toEntity, isNullOrEmpty...");
 	 		result = new Feed();
 	 	}else{
-	 		result = Feed.get(Feed.class, id);
+	 		result = Feed.get(Feed.class, id); 
 	 	}
         //result.setId (feedDTO.getId());
          //result.setVersion (feedDTO.getVersion());
@@ -73,12 +73,15 @@ public class FeedAssembler {
        result.setStartTime(DateUtils.convertStrToDate(startTime, DateUtils.DATE_TIME_PATTERN));
        String endTime = feedDTO.getEndTime();
        result.setEndTime(DateUtils.convertStrToDate(endTime, DateUtils.DATE_TIME_PATTERN));
+      // String createTime = "2017-4-25 10:08:50";
+       String createTime = feedDTO.getCreateTime();
+       result.setCreateTime(DateUtils.convertStrToDate("2017-4-25 10:08:50", DateUtils.DATE_TIME_PATTERN));
          result.setContent (feedDTO.getContent());
         // result.setCountNum (feedDTO.getCountNum());
          //result.setPosition (feedDTO.getPosition());
         // result.setPageView (feedDTO.getPageView());
          result.setCategoryId (feedDTO.getCategoryId());
-         //result.setDisplay (feedDTO.getDisplay());
+         result.setDisplay (feedDTO.getDisplay());
          //result.setAdminId (feedDTO.getAdminId());
          //result.setCreateTime (feedDTO.getCreateTime());
         // result.setUpdateTime (feedDTO.getUpdateTime());

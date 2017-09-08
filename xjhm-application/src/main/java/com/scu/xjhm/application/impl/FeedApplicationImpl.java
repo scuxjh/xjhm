@@ -19,6 +19,7 @@ public class FeedApplicationImpl implements FeedApplication {
 	}
 	
 	public void creatFeed(Feed feed) {
+		
 		feed.save();
 	}
 	

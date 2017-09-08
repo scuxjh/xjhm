@@ -172,7 +172,7 @@ $(function (){
  */
 var addfeed = function($grid, feedId){
 	
-	var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
 	// $.get(url)请求载入信息,function(html)??html是什么？
     $.get(url).done(function(html){
     	var $dialog = $(html);
@@ -183,13 +183,24 @@ var addfeed = function($grid, feedId){
     		var $form = $dialog.find('form');
     		//20170118pm
     		initForm($form);
+    		//20170816pm
+    		var $content = $form.find("#contentID");
+	    	//$content.summernote({height:200,lang:'zh-CN'});//20170816pm
+	    	var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
+	    	$content.summernote({height:200,lang:'zh-CN',
+	    		callbacks: {
+	    			onImageUpload: function(files) {
+	    				console.log("onImageUpload....,files:"+files);
+	    				$content.summernote('insertImage', imageUrl);
+	    			}
+	    		}});//20170816pm
     		$dialog.modal({
-                keyboard:true
+                keyboard:false
                 //on()函数用于为指定元素的一个或多个事件绑定事件处理函数。
             })
     		.on({
             	//remove() 方法删除被选元素及其子元素。
-                "hidden.bs.modal": function(){$(this).remove();}
+               // "hidden.bs.modal": function(){$(this).remove();}
             });
     		//console.log("1111,in addfeed,feedId:"+feedId);
     		if(feedId) {

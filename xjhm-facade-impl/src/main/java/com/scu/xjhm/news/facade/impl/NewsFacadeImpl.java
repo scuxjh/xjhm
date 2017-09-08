@@ -23,7 +23,6 @@ import com.scu.xjhm.news.facade.NewsFacade;
 import com.scu.xjhm.news.facade.dto.NewsDTO;
 import com.scu.xjhm.news.facade.impl.assembler.NewsAssembler;
 import com.scu.xjhm.application.NewsApplication;
-
 @Transactional(value = "transactionManager_security")
 @Named
 public class NewsFacadeImpl implements NewsFacade {
