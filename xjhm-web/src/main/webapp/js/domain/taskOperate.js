@@ -308,6 +308,8 @@ var viewTaskbook = function(id, curTeachClassId){
    		1.new。
    20170817nt
    		1.增加单选按钮radio的数据回显功能。
+   20170910pm
+       1.数据回显时，回显summernote代码。
  */
 var appendData2Form = function(requestMapping, $dialog, id, viewMode){
     var $form = $dialog.find('form');
@@ -333,6 +335,9 @@ var appendData2Form = function(requestMapping, $dialog, id, viewMode){
 				$elm.parent().find("input[type='radio'][id='"+radioId+"']").attr("checked", "checked");
 			}
 		}
+		//数据回显时，回显summernote代码。viewMode查看模式不回显summernote。20170910pm
+		if(!viewMode && $form.find('#summernoteDiv'))  $form.find('#summernoteDiv').summernote('code', $form.find('#contentID').val());
+		
 		if(viewMode)  initViewMode($dialog);//20160802pm
 	});
 };

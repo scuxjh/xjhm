@@ -730,6 +730,27 @@
     </build>
 
     <repositories>
+        <!-- 20170909 -->
+        <repository>
+            <id>apache-releases</id>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>apache-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
         <repository>
             <id>koala-releases</id>
             <url>http://nexus.openkoala.org/content/repositories/public-releases/</url>
@@ -750,7 +771,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-                <repository>
+        <repository>
             <id>dayatang-releases</id>
             <url>http://nexus.dayatang.org:8083/content/repositories/releases</url>
             <releases>

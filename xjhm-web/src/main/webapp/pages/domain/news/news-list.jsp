@@ -147,6 +147,8 @@ $(function (){
    @version
    	20170118am
        1.new.
+    20170823nt
+       1.保存时，增加对summernote内容的保存；
  */
 var addNews = function($grid, newsId){
 	//var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
@@ -160,24 +162,50 @@ var addNews = function($grid, newsId){
     		var $form = $dialog.find('form');
     		//调用taskOperate.js共用方法 ，初始化任务表单   20170118pm
     		initForm($form);
+    		//20170910pm
+    		$form.find('#contentID').hide();
     		
     		//20170816pm
-    		var $content = $form.find("#contentID");
+    		var $content = $form.find("#summernoteDiv");
 	    	//$content.summernote({height:200,lang:'zh-CN'});//20170816pm
-	    	var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
+	    	//var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
 	    	$content.summernote({height:200,lang:'zh-CN',
 	    		callbacks: {
-	    			onImageUpload: function(files) {
-	    				console.log("onImageUpload....,files:"+files);
-	    				$content.summernote('insertImage', imageUrl);
+	    			onImageUpload: function(files) {//20170823nt
+	    				var fileName = files[0].name;
+	    				var fileType = files[0].type;
+	    				var fileSize = files[0].size;
+	    				console.log("onImageUpload....,fileName:"+fileName+",fileType:"+fileType+",fileSize:"+fileSize);
+	    				if(fileType.indexOf('image') < 0) {$form.message({type: 'warning', content: '只能上传图片'}); return;}
+	    				if(fileSize > 5*1024*1024) {$form.message({type: 'warning', content: '图片尺寸最大5M'}); return;}
+	    				
+	    				//使用FormData对象添加字段方式上传文件.20170910pm
+	    				var formData = new FormData();
+	    				formData.append("file", files[0]);
+	    				var theUrl = contextPath + "/news/uploadImage.action";
+	    				$.ajax({
+	    				    url: theUrl,
+	    				    type: 'POST',
+	    				    datatype: 'json',
+	    				    data: formData,
+	    				    cache:false,
+	    				    traditional: true,
+	    				    contentType: false,
+	    				    processData: false,
+	    				    success: function (responseStr) {
+	    				    	if(responseStr.success){
+	    				    		console.log("上传文件成功。");
+	    				    		var imageUrl = contextPath + responseStr.data.imageUrl;
+	    				    		console.log("responseStr.data.imageUrl:"+imageUrl);
+	    				    		console.log("responseStr.data.message:"+responseStr.data.message);
+	    				    		$content.summernote('insertImage', imageUrl);
+	    				    	}
+	    				    },
+	    				    error: function () {console.log("请求服务器失败。");}
+	    				  });
 	    			}
 	    		}});//20170816pm
 	    	
-	    	/*$content.on('summernote.image.upload', function(we, files) {
-	    	// upload image to server and create imgNode...
-	    		$content.summernote('insertNode', imgNode);
-	    	});*/
-    		
     		$dialog.modal({
                 keyboard:false
             }).on({
@@ -188,9 +216,15 @@ var addNews = function($grid, newsId){
             $dialog.find('#saveBtn').on('click', function(e){
                   //if(!Validator.Validate($form))  return;//20160825nt
                   //console.log("1111,in add..,serialize:"+$dialog.find('form').serialize());
+                  var contentSummernote = $content.summernote('code');//获取summernote中编辑的代码内容
+                  console.log("1111,in save,contentSummernote:"+contentSummernote);
+                  $dialog.find('#contentID').val(contentSummernote);
+                  //return;
                   var theUrl = contextPath+"/news/add.action";
+                  console.log($dialog.find('form').serialize());
+                  //return;
                   $.post(theUrl, $dialog.find('form').serialize()).done(function(result){
-                       if(result.success ){
+                       if(result.success){
                     	   $dialog.modal('hide');
                            $grid.getGrid().refresh();
                            $grid.message({type: 'success', content: '操作成功'});
@@ -211,7 +245,8 @@ var addNews = function($grid, newsId){
        1.new.
  */
 var viewNews = function(id){
-	var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	//var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
     	//$dialog.find(".modal-title").html("查看");
@@ -219,6 +254,7 @@ var viewNews = function(id){
     	$.get(url).done(function(html){
     		$dialog.find("form").append($(html));
     	    var $form = $dialog.find('form');
+    	    if($form.find('#summernoteDiv'))  $form.find('#summernoteDiv').hide();
     	    initForm($form);
     	    $dialog.modal({
     	    	keyboard:false
@@ -226,6 +262,7 @@ var viewNews = function(id){
     	    	'hidden.bs.modal': function(){$(this).remove();}
     	    });
     	    appendData2Form("news", $dialog, id, true);
+    	    
     	 });
 	});
 };//End of function viewNews.
