@@ -55,9 +55,9 @@
                     	<div class="row">
                     	<label class="col-md-2 control-label" for="name">反馈内容:</label>
                         	<div class="col-md-10">
-                            	<!--  <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" dataType="Require"></textarea>
-                            	<span class="required">*</span>-->
-                            	<div name="content" id="contentID"></div>
+                            	 <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" dataType="Require"></textarea>
+                            	<!-- <span class="required">*</span>-->
+                            	<div name="summernoteDiv" id="summernoteDiv"></div>
                         	</div>
                     	</div>
                     </div>

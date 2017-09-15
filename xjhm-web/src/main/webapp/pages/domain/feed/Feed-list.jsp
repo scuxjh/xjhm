@@ -184,14 +184,44 @@ var addfeed = function($grid, feedId){
     		//20170118pm
     		initForm($form);
     		//20170816pm
-    		var $content = $form.find("#contentID");
+    		$form.find('#contentID').hide();
+    		var $content = $form.find("#summernoteDiv");
 	    	//$content.summernote({height:200,lang:'zh-CN'});//20170816pm
-	    	var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
+	    	//var imageUrl = "https://imgsa.baidu.com/exp/pic/item/7a8a1446f21fbe09554416df62600c338644ada0.jpg";
 	    	$content.summernote({height:200,lang:'zh-CN',
 	    		callbacks: {
-	    			onImageUpload: function(files) {
-	    				console.log("onImageUpload....,files:"+files);
-	    				$content.summernote('insertImage', imageUrl);
+	    			onImageUpload: function(files) {//20170823nt
+	    				var fileName = files[0].name;
+	    				var fileType = files[0].type;
+	    				var fileSize = files[0].size;
+	    				console.log("onImageUpload....,fileName:"+fileName+",fileType:"+fileType+",fileSize:"+fileSize);
+	    				if(fileType.indexOf('image') < 0) {$form.message({type: 'warning', content: '只能上传图片'}); return;}
+	    				if(fileSize > 5*1024*1024) {$form.message({type: 'warning', content: '图片尺寸最大5M'}); return;}
+	    				
+	    				//使用FormData对象添加字段方式上传文件.20170910pm
+	    				var formData = new FormData();
+	    				formData.append("file", files[0]);
+	    				var theUrl = contextPath + "/Feed/uploadImage.action";
+	    				$.ajax({
+	    				    url: theUrl,
+	    				    type: 'POST',
+	    				    datatype: 'json',
+	    				    data: formData,
+	    				    cache:false,
+	    				    traditional: true,
+	    				    contentType: false,
+	    				    processData: false,
+	    				    success: function (responseStr) {
+	    				    	if(responseStr.success){
+	    				    		console.log("上传文件成功。");
+	    				    		var imageUrl = contextPath + responseStr.data.imageUrl;
+	    				    		console.log("responseStr.data.imageUrl:"+imageUrl);
+	    				    		console.log("responseStr.data.message:"+responseStr.data.message);
+	    				    		$content.summernote('insertImage', imageUrl);
+	    				    	}
+	    				    },
+	    				    error: function () {console.log("请求服务器失败。");}
+	    				  });
 	    			}
 	    		}});//20170816pm
     		$dialog.modal({
