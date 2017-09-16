@@ -16,7 +16,6 @@
                                 <module>xjhm-facade-impl</module>
                                 <module>xjhm-infra</module>
                                 <module>xjhm-web</module>
-                                <module>xjhweb-web</module>
     </modules>
 
     <properties>
