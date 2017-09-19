@@ -43,7 +43,7 @@ $(function (){
                                ,{ title: '是否前台显示', name: 'display', width: col_md, render: function(rowdata, name, index){
 	                         		//rowdata??
                             	   var display = rowdata.display;
-	                         		var available = '<span class="glyphicon glyphicon-ok" style="color:#5CB85C;margin-left:15px;" title="是"></span>';
+	                         		var available = '<span class="glyphicon glyphic on-ok" style="color:#5CB85C;margin-left:15px;" title="是"></span>';
 	                         		var forbidden = '<span class="glyphicon glyphicon-remove" style="color:#D9534F;margin-left:15px;" title="否"></span>';
 	                         		if(display == "1"){
 	                         			return available;
@@ -240,7 +240,11 @@ var addfeed = function($grid, feedId){
             $dialog.find('#saveBtn').on('click', function(e){
                   //if(!Validator.Validate($form))  return;//20160825nt
                   //console.log("1111,in add..,serialize:"+$dialog.find('form').serialize());
+                  var contentSummernote = $content.summernote('code');//获取summernote中编辑的代码内容
+                  console.log("1111,in save,contentSummernote:"+contentSummernote);
+                  $dialog.find('#contentID').val(contentSummernote);
                   var theUrl = contextPath+"/Feed/add.action";
+                  console.log($dialog.find('form').serialize());
                   $.post(theUrl, $dialog.find('form').serialize()).done(function(result){
                        if(result.success ){
                     	   $dialog.modal('hide');
@@ -271,6 +275,7 @@ var viewFeed = function(id){
     	$.get(url).done(function(html){
     		$dialog.find("form").append($(html));
     	    var $form = $dialog.find('form');
+    	    if($form.find('#summernoteDiv'))  $form.find('#summernoteDiv').hide();
     	    initForm($form);
     	    $dialog.modal({
     	    	keyboard:false

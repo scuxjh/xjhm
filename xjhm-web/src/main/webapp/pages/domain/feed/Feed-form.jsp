@@ -55,8 +55,10 @@
                     	<div class="row">
                     	<label class="col-md-2 control-label" for="name">反馈内容:</label>
                         	<div class="col-md-10">
-                            	 <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" dataType="Require"></textarea>
+                            	
+                            	 <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" style="display:none;"></textarea>
                             	<!-- <span class="required">*</span>-->
+                            	<!-- 加载summernote组件的Div，name和id必须为“summernoteDiv” 20170910pm -->
                             	<div name="summernoteDiv" id="summernoteDiv"></div>
                         	</div>
                     	</div>

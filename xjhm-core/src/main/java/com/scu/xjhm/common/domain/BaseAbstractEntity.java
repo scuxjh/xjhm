@@ -32,7 +32,7 @@ public abstract class BaseAbstractEntity extends KoalaBaseEntity {
 	private static final long serialVersionUID = 8882145540383345038L;
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(BaseAbstractEntity.class);
-    
+        
 	@Id
 	@Column(name = "ID")
     private Long id;

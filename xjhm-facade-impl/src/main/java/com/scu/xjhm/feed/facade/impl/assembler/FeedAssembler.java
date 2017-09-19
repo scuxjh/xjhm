@@ -74,8 +74,8 @@ public class FeedAssembler {
        String endTime = feedDTO.getEndTime();
        result.setEndTime(DateUtils.convertStrToDate(endTime, DateUtils.DATE_TIME_PATTERN));
       // String createTime = "2017-4-25 10:08:50";
-       String createTime = feedDTO.getCreateTime();
-       result.setCreateTime(DateUtils.convertStrToDate("2017-4-25 10:08:50", DateUtils.DATE_TIME_PATTERN));
+       //String createTime = feedDTO.getCreateTime();
+      // result.setCreateTime(DateUtils.convertStrToDate("2017", DateUtils.DATE_TIME_PATTERN));
          result.setContent (feedDTO.getContent());
         // result.setCountNum (feedDTO.getCountNum());
          //result.setPosition (feedDTO.getPosition());

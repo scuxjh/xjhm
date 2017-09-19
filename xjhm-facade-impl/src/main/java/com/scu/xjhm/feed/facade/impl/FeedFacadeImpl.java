@@ -20,6 +20,7 @@ import com.scu.xjhm.feed.facade.FeedFacade;
 import com.scu.xjhm.feed.facade.dto.*;
 import com.scu.xjhm.feed.facade.impl.assembler.FeedAssembler;
 import com.scu.xjhm.application.FeedApplication;
+import com.scu.xjhm.common.core.utils.DataUtils;
 import com.scu.xjhm.common.core.utils.SysConstants;
 import com.scu.xjhm.common.facade.DataDictionaryFacade;
 @Transactional(value = "transactionManager_security")
@@ -77,8 +78,13 @@ public class FeedFacadeImpl implements FeedFacade {
 		//获取并设置"feed.CATEGORY"字典项。20170119nt
 		dicFacade.getDictItems(SysConstants.DICT_FEED_CATETORY);
 		List<Object> conditionVals = new ArrayList<Object>();
-	   	StringBuilder jpql = new StringBuilder("select _feed from Feed _feed   where 1=1 ");
-	   	if (queryVo.getFeedTitle() != null && !"".equals(queryVo.getFeedTitle())) {
+	   	//StringBuilder jpql = new StringBuilder("select _feed from Feed _feed   where 1=1 ");
+		StringBuilder jpql = new StringBuilder("select _feed from Feed _feed where 1=1 ");
+		if (!DataUtils.isNullOrEmpty(queryVo.getFeedTitle())) {
+	   		jpql.append(" and _feed.feedTitle like ?");
+	   		conditionVals.add(MessageFormat.format("%{0}%", queryVo.getFeedTitle()));
+	   	}
+	   	/*if (queryVo.getFeedTitle() != null && !"".equals(queryVo.getFeedTitle())) {
 	   		jpql.append(" and _feed.feedTitle like ?");
 	   		conditionVals.add(MessageFormat.format("%{0}%", queryVo.getFeedTitle()));
 	   	}		
@@ -105,7 +111,7 @@ public class FeedFacadeImpl implements FeedFacade {
 	   	if (queryVo.getDisplay() != null) {
 	   		jpql.append(" and _feed.display=?");
 	   		conditionVals.add(queryVo.getDisplay());
-	   	}	
+	   	}	*/
         Page<Feed> pages = getQueryChannelService()
 		   .createJpqlQuery(jpql.toString())
 		   .setParameters(conditionVals)
