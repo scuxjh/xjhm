@@ -13,7 +13,7 @@ public interface FeedFacade {
 	
 	public InvokeResult creatFeed(FeedDTO feed);
 	
-	public InvokeResult updateFeed(FeedDTO feed);
+	//public InvokeResult updateFeed(FeedDTO feed);
 	
 	public InvokeResult removeFeed(Long id);
 	
