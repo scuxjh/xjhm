@@ -43,7 +43,7 @@ $(function (){
                                ,{ title: '是否前台显示', name: 'display', width: col_md, render: function(rowdata, name, index){
 	                         		//rowdata??
                             	   var display = rowdata.display;
-	                         		var available = '<span class="glyphicon glyphic on-ok" style="color:#5CB85C;margin-left:15px;" title="是"></span>';
+	                         		var available = '<span class="glyphicon glyphicon-ok" style="color:#5CB85C;margin-left:15px;" title="是"></span>';
 	                         		var forbidden = '<span class="glyphicon glyphicon-remove" style="color:#D9534F;margin-left:15px;" title="否"></span>';
 	                         		if(display == "1"){
 	                         			return available;
@@ -267,7 +267,7 @@ var addfeed = function($grid, feedId){
        1.new.
  */
 var viewFeed = function(id){
-	var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
+	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
     	//$dialog.find(".modal-title").html("查看");
