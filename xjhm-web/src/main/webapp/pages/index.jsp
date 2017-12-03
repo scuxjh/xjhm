@@ -21,7 +21,7 @@
 	    <nav class="navbar navbar-default">
 	        <a class="navbar-brand" href="#">
 	        	<img src="${contextPath}/images/global.logo.png"/>
-	        	<span style="font-weight:800;">肖家河后端管理系统</span>
+	        	<span style="font-weight:800;">社区民主问政互动平台-后端管理系统</span>
 	        </a>
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <div class="btn-group navbar-right">
@@ -70,8 +70,11 @@
 	        </div>
 	    </div>
 	</div>
-    <%-- 底部 --%>
+    <%-- 底部 
 	<div id="footer" class="g-foot"><span>Copyright © 2017-2017 SCU</span></div>
+	--%>
+	<%-- 底部 --%>
+	<div id="footer" class="g-foot" style="display:block;margin-top:60px;"><span style="display:block;text-align:center;">Copyright &copy; 2017, 四川大学计算机学院. All rights reserved.</span></div>
 </body>
 </html>
 <script>
