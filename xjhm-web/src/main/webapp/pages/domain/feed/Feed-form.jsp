@@ -3,9 +3,9 @@
 	<form class="form-horizontal page_form">
     	<div class="form-group">
         	<div class="row">
-            	<label class="col-md-2 control-label" for="name">反馈标题:</label>
+            	<label class="col-md-2 control-label" for="name">标题:</label>
                 <div class="col-md-10">
-                	<input type="text" class="form-control" id="feedTitleID" name="feedTitle" value="" dataType="Require" placeholder="反馈标题"><span class="required">*</span>
+                	<input type="text" class="form-control" id="feedTitleID" name="feedTitle" value="" dataType="Require" placeholder="请输入标题"><span class="required">*</span>
                     <input type="hidden" id="idID" name="id" />
 				</div>
             </div>
@@ -13,7 +13,7 @@
 		<!-- 第2行 -->
 		<div class="form-group">
 			<div class="row">
-			<label class="col-md-2 control-label" for="name">反馈类别:</label>
+			<label class="col-md-2 control-label" for="name">所属类别:</label>
                 <div class="col-md-4">
 					<div class="input-group" style="width:100%;">
                     	<div class="btn-group select" id="categoryIdID" selectKey="feed.CATEGORY" ></div>
@@ -53,10 +53,10 @@
                     
                     <div class="form-group">
                     	<div class="row">
-                    	<label class="col-md-2 control-label" for="name">反馈内容:</label>
+                    	<label class="col-md-2 control-label" for="name">内容:</label>
                         	<div class="col-md-10">
                             	
-                            	 <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="反馈内容" style="display:none;"></textarea>
+                            	 <textarea class="form-control" name="content" id="contentID" rows="5" value="" placeholder="内容填写" style="display:none;"></textarea>
                             	<!-- <span class="required">*</span>-->
                             	<!-- 加载summernote组件的Div，name和id必须为“summernoteDiv” 20170910pm -->
                             	<div name="summernoteDiv" id="summernoteDiv"></div>

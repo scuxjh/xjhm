@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- 样式 默认就有 type="text/css" --%>
 <link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="${contextPath}/lib/bootstrap/css/wenjuan.css"/>
 <link rel="stylesheet" href="${contextPath}/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
 <link rel="stylesheet" href="${contextPath}/css/index.css"/>
 <link rel="stylesheet" href="${contextPath}/css/koala.css"/>
@@ -33,6 +34,7 @@
 <script  src="${contextPath}/lib/validateForm/validateForm.js"></script>
 <!-- 20170118pm -->
 <script  src="${contextPath}/js/domain/taskOperate.js"></script>
+<script  src="${contextPath}/js/domain/initQuestionnaire.js"></script>
 <!-- 20170816pm -->
 <script  src="${contextPath}/lib/bootstrap/summernote/0.8.7/summernote.min.js"></script>
 <script  src="${contextPath}/lib/bootstrap/summernote/0.8.7/lang/summernote-zh-CN.js"></script>
