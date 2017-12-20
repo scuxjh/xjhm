@@ -336,9 +336,9 @@ var viewFeed = function(id){
 				$addcontent.append("<br><div class='firstrow'><span >献策者:<span id='commenterNameID'></span></span>&nbsp&nbsp&nbsp<span>Tel:<span id='commenterTelID'></span></span>&nbsp&nbsp&nbsp<span>反馈时间:<span id='commentTimeID'></span></span></div>");
 				//$addcontent.append("&nbsp&nbsp&nbsp<span>反馈时间:<span id='commentTimeID'></span></span></div>");
 		        $addcontent.append("<textarea class='commit' id='feedContentID' type='textarea' name='feedContent' rows='5' cols='75' ></textarea><br>");
-				var comment=json[i];
-		  //alert(comment); 
+				var comment=json[i]; 
 			for(var index in comment){
+				//alert(comment[index]);
 				$elm = $addcontent.find('#'+ index + 'ID').last(); 
 				var sum;
 				if($elm.attr("type")=="textarea"){

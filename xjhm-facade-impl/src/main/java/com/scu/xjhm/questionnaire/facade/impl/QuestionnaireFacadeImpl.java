@@ -51,6 +51,7 @@ public class QuestionnaireFacadeImpl implements QuestionnaireFacade {
 	}
 	
 	public  void creatQuestioncontent(QuestioncontentDTO questioncontentDTO){
+		//questioncontentDTO.setQuestionnaireid(application.getCurrentquestionnaireid());
 		application.creatQuestioncontent(QuestionnaireAssembler.toqcEntity(questioncontentDTO));
 	}
 	

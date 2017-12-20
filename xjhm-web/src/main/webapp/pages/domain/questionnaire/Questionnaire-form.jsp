@@ -63,8 +63,6 @@
                     	<label class="col-md-2 control-label" for="name">问卷内容:</label>
                         	<div class="col-md-10">
                             	
-                            	 <textarea class="form-control" name="questionContent" id="questionContentID" rows="10" value="" placeholder="";"></textarea>
-                            	 <span class="required">*</span>
                             	<!-- 加载summernote组件的Div，name和id必须为“summernoteDiv” 20170910pm -->
                             	<!--题目显示区域---------------------------------------------------------------------------------------------------------------------------------------->
                                  <div class=" all_660">

@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 
 import org.openkoala.koala.commons.domain.KoalaLegacyEntity;
 
+import com.scu.xjhm.common.domain.BaseAbstractEntity;
+
 import java.io.Serializable;
 
 /**
@@ -28,7 +30,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="question_content")
-public class QuestionContent extends KoalaLegacyEntity {
+public class QuestionContent extends BaseAbstractEntity {
 
  private static final long serialVersionUID = 1L;
  
@@ -37,17 +39,7 @@ public class QuestionContent extends KoalaLegacyEntity {
 * 主键
 *
 **/
-      @GeneratedValue
-       @Id
-       @Column(name="question_id")
-	   //@GeneratedValue(strategy = GenerationType.AUTO)
-       private Long id;
-   
-   
-
-	public void setId(Long id) {
-	this.id = id;
-}
+      
 
 	@Column(name="question_title")
   private String questionTitle;
@@ -56,8 +48,17 @@ public class QuestionContent extends KoalaLegacyEntity {
     @Column(name="question_type")
   private int questionType;
   
+    
+     @Column(name="questionnaire_id")
+    private Long  questionnaireId;
+     
+     
+     
+   /*  @Column(name="order")
+     private int order;*/
+    
 
-    @Column(name="questionnaire_id")
+   /* @Column(name="questionnaire_id")
   private Questionnaire questionnaireId;
   
 
@@ -68,12 +69,18 @@ public class QuestionContent extends KoalaLegacyEntity {
      }
        public void setQuestionnaireId(Questionnaire questionnaireId) {
    		this.questionnaireId = questionnaireId;
-     }
+     }*/
      
 
   
     
-    public String getQuestionTitle() {
+    public Long getQuestionnaireId() {
+		return questionnaireId;
+	}
+	public void setQuestionnaireId(Long questionnaireId) {
+		this.questionnaireId = questionnaireId;
+	}
+	public String getQuestionTitle() {
 		return questionTitle;
   }
     public void setQuestionTitle(String questionTitle) {
@@ -91,35 +98,17 @@ public class QuestionContent extends KoalaLegacyEntity {
   
   
     
-   
-	
-	public Serializable getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public boolean existed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	public boolean notExisted() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	public boolean existed(String propertyName, Object propertyValue) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
    @Override
     public String[] businessKeys() {
      // TODO Auto-generated method stub
      return null;
     }
+/*public int getOrder() {
+	return order;
+}
+public void setOrder(int order) {
+	this.order = order;
+}*/
 	
 }

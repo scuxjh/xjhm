@@ -11,7 +11,7 @@ public interface QuestionnaireApplication {
 
 	public Questionnaire getQuestionnaire(Long id);
 	
-	public Questionnaire getCurrentquestionnaire();
+	public  long getCurrentquestionnaireid();
 	
 	public void creatQuestionnaire(Questionnaire questionnaire);
 	

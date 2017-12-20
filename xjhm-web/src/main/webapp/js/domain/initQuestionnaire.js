@@ -1,9 +1,56 @@
+var showquestionnaire=function($dialog ,id,mode){
+	var Titleurl = contextPath+"/VoteTitle/getbyqnid/" + id + ".action";
+	var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i></div></li>";
+	var danxxiang="<li><label><input name='a' type='radio' ><span class='xxwenzi'></span></label></li>";
+	var duoxxiang="<li><label><input name='a' type='checkbox' ><span class='xxwenzi'></span></label></li>";
+	var danxdata="<div class='dx_box' data-t='0'></div>";
+	var duoxdata="<div class='dx_box' data-t='1'></div>";
+	var tkdata="<div class='dx_box' data-t='2'></div>";
+	var startt;
+	if(mode)  startt="<div class='movie_box_view'><ul class='wjdc_list'></ul></div>";
+	else      startt="<div class='movie_box'><ul class='wjdc_list'></ul></div>";//修改模式可编辑
+	$.get(Titleurl).done(function(json){
+		json=json.data;
+		for(var i in json){
+			var votetitle=json[i];
+            $dialog.find(".yd_box").append(startt);
+            $dialog.find(".wjdc_list").last().append(biaoti);
+            $dialog.find(".nmb").last().text(votetitle.questionNum);
+            $dialog.find(".btwenzi").last().text(votetitle.questionTitle); 
+            //alert($dialog.find(".btwenzi").eq(x));
+            initoption(votetitle,i);
+            
+		}
+	});
+	
+	var initoption=function(question,a){
+		var xxtype;
+		if(question.questionType==0) xxtype=danxxiang;
+		else if(question.questionType==1) xxtype=duoxxiang;
+		else if(question.questionType==2) $dialog.find(".wjdc_list").eq(a).append("<li><label><textarea class='input_wenbk btwen_text btwen_text_dx'> </textarea></label></li>");
+	var Optionurl=contextPath+"/VoteOption/getbyvtid/" + question.id + ".action";
+	setTimeout(function(){$.get(Optionurl).done(function(json){
+		json=json.data;
+		for(var i in json){
+			var voteoption=json[i];
+			$dialog.find(".wjdc_list").eq(a).append(xxtype);
+			$dialog.find(".xxwenzi").last().text(voteoption.questionOption);
+		}
+		if(!mode){
+        	if(question.questionType==0) $dialog.find(".wjdc_list").eq(a).append(danxdata);
+        	else if(question.questionType==1) $dialog.find(".wjdc_list").eq(a).append(duoxdata);
+        	else if(question.questionType==2) $dialog.find(".wjdc_list").eq(a).append(tkdata);
+        }
+});},100*a);
+	}
+}
+
 var initQuestionnaire=function($dialog){
 	//$dialog.find('.btwen_text_dx').val("danxiang");
 	 $dialog.find(".btwen_text").val("题目");
 	 $dialog.find(".btwen_text_dx").val("单选题目");
 	 $dialog.find(".btwen_text_duox").val("多选题目");
-	 $dialog.find(".btwen_text_tk").val("填空题目"); 
+	 $dialog.find(".btwen_text_tk").val("填空题目");  
 	 $dialog.find(".xxk_conn").children(".xxk_xzqh_box").eq(0).show().siblings().hide();
 	 $dialog.find(".leftbtwen_text").val("例子：CCTV1，CCTV2，CCTV3");
 	
@@ -217,8 +264,8 @@ var initQuestionnaire=function($dialog){
 				//alert($(this).children(".input_wenbk").val());
 			});
 			var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i></div></li>";
-			var danxxiang="<li><label><input name='a' type='radio' ><span></span></label></li>";
-			var duoxxiang="<li><label><input name='a' type='checkbox' ><span></span></label></li>";
+			var danxxiang="<li><label><input name='a' type='radio' ><span class='xxwenzi'></span></label></li>";
+			var duoxxiang="<li><label><input name='a' type='checkbox' ><span class='xxwenzi'></span></label></li>";
 			var danxdata="<div class='dx_box' data-t='0'></div>";
 			var duoxdata="<div class='dx_box' data-t='1'></div>";
 			var tkdata="<div class='dx_box' data-t='2'></div>";
@@ -227,6 +274,7 @@ var initQuestionnaire=function($dialog){
 			
 			//$("#first").prepend(biaoti);
 			for(var i=0;i<sz.length;i++){
+				//添加标题
 				if(!i){
 					$(".yd_box").find(".wjdc_list").last().append(biaoti);
 					$(".yd_box").find(".nmb").last().text(x);
@@ -234,7 +282,7 @@ var initQuestionnaire=function($dialog){
 				    if(sz.length==1) 
 				    	$(".yd_box").find(".wjdc_list").last().append("<li><label><textarea class='input_wenbk btwen_text btwen_text_dx'> </textarea></label></li>");
 				}
-				else{
+				else{//添加选项
 					if(bianji.parent(".dxuan").length>0)
 						$(".yd_box").find(".wjdc_list").last().append(danxxiang);
 				    else 

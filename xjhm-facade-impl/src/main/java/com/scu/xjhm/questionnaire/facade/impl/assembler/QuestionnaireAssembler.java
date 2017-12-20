@@ -98,7 +98,7 @@ public class QuestionnaireAssembler {
 		for (QuestionnaireDTO each : questionnaireDTOs) {
 			results.add(toEntity(each));
 		}
-		return results;
+		return results; 
 	}
 	 public static QuestionContent  toqcEntity(QuestioncontentDTO  questioncontentDTO){
 		 	if (questioncontentDTO == null) {
@@ -108,6 +108,8 @@ public class QuestionnaireAssembler {
 		 	QuestionContent qcresult= new QuestionContent();
 		 	qcresult.setQuestionTitle(questioncontentDTO.getQuestionTitle());
 		 	qcresult.setQuestionType(questioncontentDTO.getQuestionType());
+		 	//qcresult.setQuestionnaireId(a);
+		 	//qcresult.setOrder(questioncontentDTO.getOrder());
 		 	//test=qcresult.getQuestionType();
 	 	  	return qcresult;
 		 }

@@ -18,7 +18,6 @@ $(function (){
 	//$.now() 函数用于返回当前时间距1970年1月1日午夜所经过的毫秒数
 	var nowNumber = $.now();//20150817am
     ($searchForm_question=$("#searchForm_question")).attr("id", "form_"+nowNumber);//20150817am
- 
     ($grid_question=$("#divGrid_question")).attr("id", "grid_"+nowNumber);
     //设置pageloader的initGridPanel属性为一个function函数，PageLoader。initGridPanel可以调用此函数
 	PageLoader = {
@@ -181,18 +180,15 @@ var addquestion = function($grid, questionId){
     	url = contextPath+"/pages/domain/questionnaire/Questionnaire-form.jsp";
     	$.get(url).done(function(html){
     		$dialog.find('form').append($(html));
-    		var $form = $dialog.find('form');
+    		var $form = $dialog.find('form'); 
     		 //20170118pm
     		initForm($form);
     		 //初始化问卷
     		initQuestionnaire($dialog);
-    		
-    		//20170816pm
     		//bootstrap模态框，backdrop使点击背景时不自动关闭
     		$dialog.modal({
     			backdrop:'static',
                 keyboard:false
-                
                 //on()函数用于为指定元素的一个或多个事件绑定事件处理函数。
             })
             
@@ -206,22 +202,15 @@ var addquestion = function($grid, questionId){
     		if(questionId) {
     			$dialog.find(".modal-title").html("<b>修改</b>");
     			appendData2Form("Questionnaire", $dialog, questionId);
+    			showquestionnaire($dialog,questionId,false);
+    			
     		}
             $dialog.find('#saveBtn').on('click', function(e){
-                 
                   var theUrl = contextPath+"/Questionnaire/add.action";
-                  var thecontentUrl=contextPath+"/Questionnaire/addcontent.action"
                   console.log($dialog.find('form').serialize());
-                  $dialog.find('.btwenzi').each(function(){
-                	  $.post(thecontentUrl,
-                		{questionTitle:"helo",
-                		  questionType:1
-                		  }	  
-                	  );
-                  });
-                  
                   $.post(theUrl, $dialog.find('form').serialize()).done(function(result){
                        if(result.success ){
+                    	   addvotetitle($dialog);
                     	   $dialog.modal('hide');
                            $grid.getGrid().refresh();
                            $grid.message({type: 'success', content: '操作成功'});
@@ -229,7 +218,7 @@ var addquestion = function($grid, questionId){
                            $dialog.find('.modal-content').message({type: 'error', content: result.errorMessage});
                         }
                   });//end of $.post.done().
-                
+                 
             });
     	});
     });
@@ -242,6 +231,43 @@ var addquestion = function($grid, questionId){
        20170119nt
        1.new.
  */
+ var countxx;
+ var addvotetitle=function($dialog){
+	       countxx=0;
+    	   $dialog.find('.btwenzi').each(function(counttime,currentbt){
+    		   //添加延迟，保证each中的内容依此执行
+    		   setTimeout(function(){addtimeout($dialog,currentbt);},counttime*2000);
+         	 }); 
+       }
+       var addtimeout=function($dialog,currentbt){
+    	   var $bt= $dialog.find('.btwenzi');
+           var thecontentUrl=contextPath+"/VoteTitle/add.action";
+    	   $.post(thecontentUrl,
+            		{questionTitle:$(currentbt).text(),
+            		 questionType:$(currentbt).parents(".movie_box").children(".dx_box").attr("data-t"),
+            		 questionNum:$(currentbt).siblings(".nmb").text(),
+            		  }	  
+            	  ).done(function(result){
+            		 if(result.success ){
+                       $currentbt=$bt.eq(countxx++);
+            			$currentbt.parents(".movie_box").find(".xxwenzi").each(function(num,currentxx){
+            				setTimeout(function(){addvoteoption(num,currentxx);},num*400);
+            			
+            			});
+            			
+            	  }
+            		else{
+                       $dialog.find('.modal-content').message({type: 'error', content: result.errorMessage});
+                    }
+            	  });
+       }
+var addvoteoption=function(i,currentxx){
+	var theoptionUrl=contextPath+"/VoteOption/add.action";
+	$.post(theoptionUrl,{
+		questionOption:$(currentxx).text(),
+			optionNum:i+1,
+	});
+}       
 var viewquestion = function(id){
 	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
     $.get(url).done(function(html){
@@ -257,7 +283,11 @@ var viewquestion = function(id){
     	    }).on({
     	    	'hidden.bs.modal': function(){$(this).remove();}
     	    });
+    	    $dialog.find(".xxk_box").remove();
     	    appendData2Form("Questionnaire", $dialog, id, true);
+    	    showquestionnaire($dialog,id,true);
+    	    
+    		
     	 });
 	});
 };//End of function viewquestion.
