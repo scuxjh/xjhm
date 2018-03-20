@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.scu.xjhm.common.core.utils.DataUtils;
 import com.scu.xjhm.common.core.utils.DateUtils;
 import com.scu.xjhm.questionnaire.core.domain.*;
 import com.scu.xjhm.questionnaire.facade.dto.VoteOptionDTO;
@@ -40,7 +41,14 @@ public class VoteOptionAssembler {
 	 	if (voteOptionDTO == null) {
 			return null;
 		}
-	 	VoteOption result  = new VoteOption();
+	 	VoteOption result = null;
+	 	Long id = voteOptionDTO.getId();
+	 	if(DataUtils.isNullOrEmpty(id)){
+	 		//LOGGER.info("1111,in toEntity, isNullOrEmpty...");
+	 		result = new VoteOption();
+	 	}else{
+	 		result = VoteOption.get(VoteOption.class, id); 
+	 	}
         //result.setId (voteOptionDTO.getId());
          //result.setVersion (voteOptionDTO.getVersion());
          //result.setCreateTime (voteOptionDTO.getCreateTime());

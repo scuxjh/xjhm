@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.web.bind.WebDataBinder;
 
-import java.text.SimpleDateFormat;             
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -15,41 +15,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.dayatang.utils.Page;
+import com.scu.xjhm.questionnaire.facade.VoteRecordFacade;
+import com.scu.xjhm.questionnaire.facade.dto.VoteRecordDTO;
+
 import org.openkoala.koala.commons.InvokeResult;
-import com.scu.xjhm.questionnaire.facade.QuestionnaireFacade;
-import com.scu.xjhm.questionnaire.facade.dto.QuestionnaireDTO;
-//import com.scu.xjhm.questionnaire.facade.QuestionnaireFacade;
-
-//import com.scu.xjhm.questionnaire.facade.impl.QuestionnaireFacadeImpl;
-
 
 @Controller
-@RequestMapping("/Questionnaire")
-public class QuestionnaireController {
+@RequestMapping("/VoteRecord")
+public class VoteRecordController {
 		
 	@Inject
-	private QuestionnaireFacade questionnaireFacade;
+	private VoteRecordFacade voteRecordFacade;
 	
 	@ResponseBody
 	@RequestMapping("/add")
-	public InvokeResult add(QuestionnaireDTO questionnaireDTO) {
-		 
-		//xx= questionnaireFacadeimpl.getCurrentQuestionnaire(questionnaireDTO);
-		return questionnaireFacade.creatQuestionnaire(questionnaireDTO);
-		
+	public InvokeResult add(VoteRecordDTO voteRecordDTO) {
+		return voteRecordFacade.creatVoteRecord(voteRecordDTO);
 	}
-	
 	
 	@ResponseBody
 	@RequestMapping("/update")
-	public InvokeResult update(QuestionnaireDTO questionnaireDTO) {
-		return questionnaireFacade.updateQuestionnaire(questionnaireDTO);
+	public InvokeResult update(VoteRecordDTO voteRecordDTO) {
+		return voteRecordFacade.updateVoteRecord(voteRecordDTO);
 	}
 	
 	@ResponseBody
 	@RequestMapping("/pageJson")
-	public Page pageJson(QuestionnaireDTO questionnaireDTO, @RequestParam int page, @RequestParam int pagesize) {
-		Page<QuestionnaireDTO> all = questionnaireFacade.pageQueryQuestionnaire(questionnaireDTO, page, pagesize);
+	public Page pageJson(VoteRecordDTO voteRecordDTO, @RequestParam int page, @RequestParam int pagesize) {
+		Page<VoteRecordDTO> all = voteRecordFacade.pageQueryVoteRecord(voteRecordDTO, page, pagesize);
 		return all;
 	}
 	
@@ -61,13 +54,18 @@ public class QuestionnaireController {
         for (int i = 0; i < value.length; i ++) {
         	        					idArrs[i] = Long.parseLong(value[i]);
 						        }
-        return questionnaireFacade.removeQuestionnaires(idArrs);
+        return voteRecordFacade.removeVoteRecords(idArrs);
 	}
 	
 	@ResponseBody
 	@RequestMapping("/get/{id}")
 	public InvokeResult get(@PathVariable Long id) {
-		return questionnaireFacade.getQuestionnaire(id);
+		return voteRecordFacade.getVoteRecord(id);
+	}
+	@ResponseBody
+	@RequestMapping("/getbyqnid/{id}")
+	public InvokeResult getbyqnid(@PathVariable Long id) {
+		return voteRecordFacade.getVoteRecordByqnid(id);
 	}
 	
 		

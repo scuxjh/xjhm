@@ -79,22 +79,18 @@
     </ul>
     <div class="xxk_conn"> 
       <!--单选----------------------------------------------------------------------------------------------------------------------------------------->
-      <div class="xxk_xzqh_box dxuan ">
+      <div class="xxk_xzqh_box dxuan " id="jsd">
         <textarea name="" cols="" rows=""  class="input_wenbk btwen_text btwen_text_dx"    onblur="if(!this.value)this.value='单选题目'" onclick="if(this.value&&this.value=='单选题目' )  this.value=''"></textarea>
         <div class="title_itram" id="text">
           <div class="kzjxx_iteam" >
             <input name="" type="radio" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-            <label>
-              <input name="" type="checkbox" value="" class="fxk">
-              <span>可填空</span></label>
+            
             <a href="javascript:void(0);" class="del_xm">删除</a> </div>
           <div class="kzjxx_iteam">
             <input name="" type="radio" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-            <label>
-              <input name="" type="checkbox" value="" class="fxk">
-              <span>可填空</span></label>
+            
             <a href="javascript:void(0);" class="del_xm">删除</a> </div>
         </div>
         <a href="javascript:void(0)" class="zjxx">增加选项</a> 
@@ -110,17 +106,11 @@
           <div class="kzjxx_iteam">
             <input name="" type="checkbox" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-            <label>
-              <input name="" type="checkbox" value="" class="fxk">
-              <span>可填空</span></label>
             <a href="javascript:void(0);" class="del_xm">删除</a> </div>
           <div class="kzjxx_iteam">
             <input name="" type="checkbox" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-            <label>
-              <input name="" type="checkbox" value="" class="fxk">
-              <span>可填空</span></label>
-            <a href="javascript:void(0);" class="del_xm">删除</a> </div>
+           <a href="javascript:void(0);" class="del_xm">删除</a> </div>
         </div>
         <a href="javascript:void(0)" class="zjxx">增加选项</a> 
         

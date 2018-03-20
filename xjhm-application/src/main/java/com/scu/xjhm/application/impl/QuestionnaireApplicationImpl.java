@@ -8,7 +8,6 @@ import javax.inject.Named;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.scu.xjhm.application.QuestionnaireApplication;
-import com.scu.xjhm.questionnaire.core.domain.QuestionContent;
 import com.scu.xjhm.questionnaire.core.domain.Questionnaire;
 
 @Named
@@ -39,13 +38,6 @@ public class QuestionnaireApplicationImpl implements QuestionnaireApplication {
 		QuestionnaireApplicationImpl.currentquestionnaireid = currentquestionnaireid;
 	}
 
-
-	public void creatQuestioncontent(QuestionContent questionContent){
-		questionContent.setQuestionnaireId(getCurrentquestionnaireid());
-		questionContent.save();
-		//questionContent.setQuestionnaireId(currentquestionnaire);
-		
-	}
 	
 	public void updateQuestionnaire(Questionnaire questionnaire) {
 		questionnaire.save();

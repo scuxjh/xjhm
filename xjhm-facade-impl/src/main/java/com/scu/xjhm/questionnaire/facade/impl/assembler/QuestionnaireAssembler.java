@@ -9,7 +9,6 @@ import com.scu.xjhm.common.core.utils.DataUtils;
 import com.scu.xjhm.common.core.utils.DateUtils;
 import com.scu.xjhm.common.core.utils.SysConstants;
 import com.scu.xjhm.questionnaire.core.domain.*;
-import com.scu.xjhm.questionnaire.facade.dto.QuestioncontentDTO;
 import com.scu.xjhm.questionnaire.facade.dto.QuestionnaireDTO;
 
 
@@ -100,17 +99,4 @@ public class QuestionnaireAssembler {
 		}
 		return results; 
 	}
-	 public static QuestionContent  toqcEntity(QuestioncontentDTO  questioncontentDTO){
-		 	if (questioncontentDTO == null) {
-				return null;
-			}
-		 	
-		 	QuestionContent qcresult= new QuestionContent();
-		 	qcresult.setQuestionTitle(questioncontentDTO.getQuestionTitle());
-		 	qcresult.setQuestionType(questioncontentDTO.getQuestionType());
-		 	//qcresult.setQuestionnaireId(a);
-		 	//qcresult.setOrder(questioncontentDTO.getOrder());
-		 	//test=qcresult.getQuestionType();
-	 	  	return qcresult;
-		 }
 }

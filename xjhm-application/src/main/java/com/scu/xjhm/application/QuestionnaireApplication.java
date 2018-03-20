@@ -4,7 +4,6 @@ package com.scu.xjhm.application;
 import java.util.List;
 import java.util.Set;
 
-import com.scu.xjhm.questionnaire.core.domain.QuestionContent;
 import  com.scu.xjhm.questionnaire.core.domain.Questionnaire;
 
 public interface QuestionnaireApplication {
@@ -14,8 +13,6 @@ public interface QuestionnaireApplication {
 	public  long getCurrentquestionnaireid();
 	
 	public void creatQuestionnaire(Questionnaire questionnaire);
-	
-	public void creatQuestioncontent(QuestionContent questionContent);
 	
 	public void updateQuestionnaire(Questionnaire questionnaire);
 	

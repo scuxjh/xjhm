@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.scu.xjhm.common.core.utils.DataUtils;
 import com.scu.xjhm.common.core.utils.DateUtils;
 import com.scu.xjhm.questionnaire.core.domain.*;
 import com.scu.xjhm.questionnaire.facade.dto.VoteTitleDTO;
@@ -41,7 +42,14 @@ public class VoteTitleAssembler {
 	 	if (voteTitleDTO == null) {
 			return null;
 		}
-	 	VoteTitle result  = new VoteTitle();
+	 	VoteTitle result = null;
+	 	Long id = voteTitleDTO.getId();
+	 	if(DataUtils.isNullOrEmpty(id)){
+	 		//LOGGER.info("1111,in toEntity, isNullOrEmpty...");
+	 		result = new VoteTitle();
+	 	}else{
+	 		result = VoteTitle.get(VoteTitle.class, id); 
+	 	}
         //result.setId (voteTitleDTO.getId());
         // result.setVersion (voteTitleDTO.getVersion());
         // result.setCreateTime (voteTitleDTO.getCreateTime());

@@ -1,29 +1,29 @@
 var showquestionnaire=function($dialog ,id,mode){
 	var Titleurl = contextPath+"/VoteTitle/getbyqnid/" + id + ".action";
 	var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i></div></li>";
-	var danxxiang="<li><label><input name='a' type='radio' ><span class='xxwenzi'></span></label></li>";
-	var duoxxiang="<li><label><input name='a' type='checkbox' ><span class='xxwenzi'></span></label></li>";
+	var danxxiang="<li><label><input name='a' type='radio' ><span class='xxwenzi' id=''></span></label></li>";
+	var duoxxiang="<li><label><input name='a' type='checkbox' ><span class='xxwenzi' id=''></span></label></li>";
 	var danxdata="<div class='dx_box' data-t='0'></div>";
 	var duoxdata="<div class='dx_box' data-t='1'></div>";
 	var tkdata="<div class='dx_box' data-t='2'></div>";
 	var startt;
 	if(mode)  startt="<div class='movie_box_view'><ul class='wjdc_list'></ul></div>";
-	else      startt="<div class='movie_box'><ul class='wjdc_list'></ul></div>";//修改模式可编辑
+	else      startt="<div class='movie_box' id=''><ul class='wjdc_list'></ul></div>";//修改模式可编辑
 	$.get(Titleurl).done(function(json){
 		json=json.data;
 		for(var i in json){
 			var votetitle=json[i];
             $dialog.find(".yd_box").append(startt);
+            $dialog.find(".movie_box").eq(i).attr("id",votetitle.id);
             $dialog.find(".wjdc_list").last().append(biaoti);
             $dialog.find(".nmb").last().text(votetitle.questionNum);
             $dialog.find(".btwenzi").last().text(votetitle.questionTitle); 
-            //alert($dialog.find(".btwenzi").eq(x));
             initoption(votetitle,i);
             
 		}
 	});
 	
-	var initoption=function(question,a){
+var initoption=function(question,a){
 		var xxtype;
 		if(question.questionType==0) xxtype=danxxiang;
 		else if(question.questionType==1) xxtype=duoxxiang;
@@ -35,14 +35,56 @@ var showquestionnaire=function($dialog ,id,mode){
 			var voteoption=json[i];
 			$dialog.find(".wjdc_list").eq(a).append(xxtype);
 			$dialog.find(".xxwenzi").last().text(voteoption.questionOption);
+			$dialog.find(".xxwenzi").last().attr("id",voteoption.id);
 		}
 		if(!mode){
-        	if(question.questionType==0) $dialog.find(".wjdc_list").eq(a).append(danxdata);
-        	else if(question.questionType==1) $dialog.find(".wjdc_list").eq(a).append(duoxdata);
-        	else if(question.questionType==2) $dialog.find(".wjdc_list").eq(a).append(tkdata);
+        	if(question.questionType==0) $dialog.find(".movie_box").eq(a).append(danxdata);
+        	else if(question.questionType==1) $dialog.find(".movie_box").eq(a).append(duoxdata);
+        	else if(question.questionType==2) $dialog.find(".movie_box").eq(a).append(tkdata);
         }
 });},100*a);
 	}
+}
+
+var showquestionanswer=function($dialog,questionnaireid){
+	var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i>[<i class='type'> </i>]</div></li>";
+	var title="<li><div class='title'>反馈<i class='anmb'></i>&nbsp&nbsp&nbsp&nbsp<i class='votetime'></i></div></li>"
+	var recordurl = contextPath+"/VoteRecord/getbyqnid/" + questionnaireid + ".action";
+	var votetitleurl=contextPath+"/VoteTitle/getbyqnid/" + questionnaireid + ".action";
+	var startt="<div class='movie_box' id=''><ul class='wjdc_list'></ul></div>";
+	var questionstartt="<div class='question_box' id=''><ul class='question_list'></ul></div>";
+	var xxiang="<li><label><span class='xxwenzi' id=''></span></label></li>";
+	$.get(recordurl).done(function(json){
+		json=json.data;
+		for(var i in json){
+			var voterecord=json[i];
+			var recordanswer=voterecord.problemChoice;
+			//alert(recordanswer);
+			//将投票答案存入a数组
+			var a =new Array();
+			a=recordanswer.split(";");
+			$dialog.find(".all_answer").append(startt);
+            $dialog.find(".wjdc_list").last().append(title);
+            $dialog.find(".anmb").last().text(i+1);
+            $dialog.find(".votetime").last().text(voterecord.voteTime);
+         $.get(votetitleurl).done(function(votejson){
+        	 votejson=votejson.data;
+        	 for(var index in votejson){
+        		 var votetitle=votejson[index];
+        		 var questiontype=votetitle.questionType;
+        		 $dialog.find(".wjdc_list").last().append(questionstartt);
+        		 $dialog.find(".question_list").last().append(biaoti).append(xxiang);
+        		 $dialog.find(".nmb").last().text(votetitle.questionNum);
+        		 $dialog.find(".btwenzi").last().text(votetitle.questionTitle);
+        		 $dialog.find(".xxwenzi").last().text(a[index]);
+        		 if(questiontype==0)$dialog.find(".type").last().text("单选");
+        		 if(questiontype==1)$dialog.find(".type").last().text("多选");
+        		 if(questiontype==2)$dialog.find(".type").last().text("填空");
+        	 }
+         });
+         
+		}
+	});
 }
 
 var initQuestionnaire=function($dialog){
@@ -248,6 +290,7 @@ var initQuestionnaire=function($dialog){
 		//完成编辑（编辑）
 		var x=0;
 		$(".swcbj_but").live("click", function() {   
+			//alert("sdkfe");
 			var bianji=$(this).parent(".bjqxwc_box");
 			//编辑修改
 		var jcxxxx = bianji.parent(".dx_box");
@@ -263,6 +306,7 @@ var initQuestionnaire=function($dialog){
 				sz.push($(this).val());
 				//alert($(this).children(".input_wenbk").val());
 			});
+			
 			var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i></div></li>";
 			var danxxiang="<li><label><input name='a' type='radio' ><span class='xxwenzi'></span></label></li>";
 			var duoxxiang="<li><label><input name='a' type='checkbox' ><span class='xxwenzi'></span></label></li>";

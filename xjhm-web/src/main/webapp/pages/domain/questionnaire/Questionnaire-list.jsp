@@ -63,6 +63,14 @@ $(function (){
 	                                     return h;                         
 	                                 }
 	                            }
+	                           ,{ title: '问卷反馈', width: col_xs, render: function (rowdata, name, index)
+	                                 {
+	                                     var param = '"' + rowdata.id + '"';
+	                                     //点击链接时返回js函数viewquestion
+	                                     var h = "<a href='javascript:viewquestionanswer(" + param + ")'>查看</a> ";
+	                                     return h;                         
+	                                 }
+	                            }
 	                ]
 	         }).on({
 	                   'add': function(){
@@ -195,7 +203,7 @@ var addquestion = function($grid, questionId){
     		.on(
     			
             	//remove() 方法删除被选元素及其子元素。
-               // "hidden.bs.modal": function(){$(this).remove();}
+                "hidden.bs.modal", function(){$dialog.remove();}
             );
     		
     		//console.log("1111,in addquestion,questionId:"+questionId);
@@ -210,8 +218,9 @@ var addquestion = function($grid, questionId){
                   console.log($dialog.find('form').serialize());
                   $.post(theUrl, $dialog.find('form').serialize()).done(function(result){
                        if(result.success ){
-                    	   addvotetitle($dialog);
+                    	   addvotetitle($dialog );
                     	   $dialog.modal('hide');
+                    	  // $dialog.refresh();
                            $grid.getGrid().refresh();
                            $grid.message({type: 'success', content: '操作成功'});
                         }else{
@@ -243,7 +252,9 @@ var addquestion = function($grid, questionId){
     	   var $bt= $dialog.find('.btwenzi');
            var thecontentUrl=contextPath+"/VoteTitle/add.action";
     	   $.post(thecontentUrl,
-            		{questionTitle:$(currentbt).text(),
+            		{
+    		         id:$(currentbt).parents(".movie_box").attr("id"),
+    		         questionTitle:$(currentbt).text(),
             		 questionType:$(currentbt).parents(".movie_box").children(".dx_box").attr("data-t"),
             		 questionNum:$(currentbt).siblings(".nmb").text(),
             		  }	  
@@ -264,6 +275,7 @@ var addquestion = function($grid, questionId){
 var addvoteoption=function(i,currentxx){
 	var theoptionUrl=contextPath+"/VoteOption/add.action";
 	$.post(theoptionUrl,{
+		id:$(currentxx).attr("id"),
 		questionOption:$(currentxx).text(),
 			optionNum:i+1,
 	});
@@ -291,6 +303,31 @@ var viewquestion = function(id){
     	 });
 	});
 };//End of function viewquestion.
+/**
+ * 查看问卷反馈答案
+ */
+var viewquestionanswer=function(id){
+	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
+	$.get(url).done(function(html){
+    	var $dialog = $(html);
+    	//$dialog.find(".modal-title").html("查看");
+    	url = contextPath+"/pages/domain/questionnaire/Questionnaire-answer.jsp";
+    	$.get(url).done(function(html){
+    		$dialog.find("form").append($(html));
+    	    var $form = $dialog.find('form');
+    	    $dialog.modal({
+    	    	keyboard:false
+    	    }).on({
+    	    	'hidden.bs.modal': function(){$(this).remove();}
+    	    });
+    	    
+    	    showquestionanswer($dialog,id);
+    	    
+    		
+    	 });
+	});
+	
+}
 /**
  * 更改新闻前端显示状态。
  * @version

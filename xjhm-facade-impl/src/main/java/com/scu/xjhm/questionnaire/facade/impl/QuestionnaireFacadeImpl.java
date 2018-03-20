@@ -19,7 +19,6 @@ import com.scu.xjhm.common.core.utils.SysConstants;
 import com.scu.xjhm.common.facade.DataDictionaryFacade;
 import com.scu.xjhm.questionnaire.core.domain.*;
 import com.scu.xjhm.questionnaire.facade.QuestionnaireFacade;
-import com.scu.xjhm.questionnaire.facade.dto.QuestioncontentDTO;
 import com.scu.xjhm.questionnaire.facade.dto.QuestionnaireDTO;
 import com.scu.xjhm.questionnaire.facade.impl.assembler.QuestionnaireAssembler;
 
@@ -48,11 +47,6 @@ public class QuestionnaireFacadeImpl implements QuestionnaireFacade {
 	public InvokeResult creatQuestionnaire(QuestionnaireDTO questionnaireDTO) {
 		application.creatQuestionnaire(QuestionnaireAssembler.toEntity(questionnaireDTO));
 		return InvokeResult.success();
-	}
-	
-	public  void creatQuestioncontent(QuestioncontentDTO questioncontentDTO){
-		//questioncontentDTO.setQuestionnaireid(application.getCurrentquestionnaireid());
-		application.creatQuestioncontent(QuestionnaireAssembler.toqcEntity(questioncontentDTO));
 	}
 	
 	public InvokeResult updateQuestionnaire(QuestionnaireDTO questionnaireDTO) {
