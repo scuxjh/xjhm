@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.dayatang.utils.Page;
 import org.openkoala.koala.commons.InvokeResult;
-
 import com.scu.xjhm.news.facade.dto.NewsDTO;
 
 public interface NewsFacade {
+	
 
 	public InvokeResult getNews(Long id);
 	

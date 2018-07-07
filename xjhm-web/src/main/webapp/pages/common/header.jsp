@@ -18,6 +18,7 @@
 <script type="text/javascript" src="<%=contextPath %>/lib/validate.js"></script>
 
 <link href="<%=contextPath %>/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<%=contextPath %>/lib/bootstrap/css/wenjuan.css" rel="stylesheet" type="text/css" />
 <link href="<c:url value='/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css' />
     " rel="stylesheet">
 <link href="<%=contextPath %>/css/koala.css" rel="stylesheet" type="text/css" />

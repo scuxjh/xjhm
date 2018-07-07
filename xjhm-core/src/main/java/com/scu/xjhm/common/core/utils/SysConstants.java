@@ -20,4 +20,5 @@ public class SysConstants {
 	//数据字典key值 .20170119nt
 	public static final String DICT_NEWS_CATETORY = "news.CATEGORY";
 	public static final String DICT_FEED_CATETORY = "feed.CATEGORY";
+	public static final String DICT_QUESTIONNAIRE_CATETORY = "questionnaire.CATEGORY";
 }
