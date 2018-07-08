@@ -166,7 +166,7 @@ var loadContent = function(obj, url){
     }).fail(function(){
             throw new Error('加载失败');
     }).always(function(){
-        changeHeight();
+        //changeHeight();
     });
 };
 
@@ -184,7 +184,8 @@ var clearMenuEffect = function(){
  * 根据内容改变高度
  */
 var changeHeight = function(){
-    var sidebar = $('.g-sidec');
+	console.log('0111');
+	var sidebar = $('.g-sidec');
     var sidebarHeight = sidebar.outerHeight();
     var headerHeight = $('.g-head').outerHeight();
     var windowHeight = $(window).height();
@@ -196,6 +197,8 @@ var changeHeight = function(){
     var height =  windowHeight - headerHeight - footHeight;
     sidebarHeight < height && sidebar.css('height', height);
    // $('.g-sidec').css('min-height',height);
+    //console.log('windowHeight:'+windowHeight+',headerHeight:'+headerHeight+',footHeight:'+footHeight);
+    console.log('1111');
     $('.g-mainc').css('min-height', height);
 };
 

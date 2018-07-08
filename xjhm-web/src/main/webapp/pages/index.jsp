@@ -5,7 +5,7 @@
 <html lang="zh-CN">
 <head>
     <%--<%@include file="/commons/metas.jsp"%>--%>
-    <title>肖家河项目-后端管理系统</title>
+    <title>社区民主问政平台-后端管理系统</title>
     <%@include file="/commons/statics.jsp"%>
     <style>
         .nav-stacked .node ul{
@@ -74,7 +74,7 @@
 	<div id="footer" class="g-foot"><span>Copyright © 2017-2017 SCU</span></div>
 	--%>
 	<%-- 底部 --%>
-	<div id="footer" class="g-foot" style="display:block;margin-top:60px;"><span style="display:block;text-align:center;">Copyright &copy; 2017, 四川大学计算机学院. All rights reserved.</span></div>
+	<div id="footer" class="g-foot" style="display:block;margin-top:60px;"><span style="display:block;text-align:center;">Copyright &copy; 2018, 四川大学计算机学院. All rights reserved.</span></div>
 </body>
 </html>
 <script>
@@ -114,6 +114,7 @@
                         });
                     });
             },"json");
+            changeHeight();//20180707nt
         });
 
         	var renderSubMenu = function(data, $menu){
@@ -127,8 +128,6 @@
 		                        var $li = $(' <li class="submenu" data-role="openTab" data-target="'+this.url+'" data-title="'+this.name+'" ' +
 		                            'data-mark="menuMark'+this.id+'"><a ><span class="'+this.menuIcon+'"></span>&nbsp;'+this.name+'</a></li>');
 		                        $li.appendTo($menu.find('.second-level-menu:first')).find('a').css('padding-left', parseInt(this.level + 1)*18+'px');
-		                        
-		                        
 		                    }
 						});
 	                    $menu.find('[data-toggle="collapse"]').each(function(){
