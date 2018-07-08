@@ -328,6 +328,46 @@ var viewquestionanswer=function(id){
 	});
 	
 }
+var showquestionanswer=function($dialog,questionnaireid){
+	var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i>[<i class='type'> </i>]</div></li>";
+	var title="<li><div class='title'>反馈<i class='anmb'></i>&nbsp&nbsp&nbsp&nbsp<i class='votetime'></i></div></li>"
+	var recordurl = contextPath+"/VoteRecord/getbyqnid/" + questionnaireid + ".action";
+	var votetitleurl=contextPath+"/VoteTitle/getbyqnid/" + questionnaireid + ".action";
+	var startt="<div class='movie_box' id=''><ul class='wjdc_list'></ul></div>";
+	var questionstartt="<div class='question_box' id=''><ul class='question_list'></ul></div>";
+	var xxiang="<li><label><span class='xxwenzi' id=''></span></label></li>";
+	$.get(recordurl).done(function(json){
+		json=json.data;
+		for(var i in json){
+			var voterecord=json[i];
+			var recordanswer=voterecord.problemChoice;
+			//alert(recordanswer);
+			//将投票答案存入a数组
+			var a =new Array();
+			a=recordanswer.split(";");
+			$dialog.find(".all_answer").append(startt);
+            $dialog.find(".wjdc_list").last().append(title);
+            $dialog.find(".anmb").last().text(i+1);
+            $dialog.find(".votetime").last().text(voterecord.voteTime);
+         $.get(votetitleurl).done(function(votejson){
+        	 votejson=votejson.data;
+        	 for(var index in votejson){
+        		 var votetitle=votejson[index];
+        		 var questiontype=votetitle.questionType;
+        		 $dialog.find(".wjdc_list").last().append(questionstartt);
+        		 $dialog.find(".question_list").last().append(biaoti).append(xxiang);
+        		 $dialog.find(".nmb").last().text(votetitle.questionNum);
+        		 $dialog.find(".btwenzi").last().text(votetitle.questionTitle);
+        		 $dialog.find(".xxwenzi").last().text(a[index]);
+        		 if(questiontype==0)$dialog.find(".type").last().text("单选");
+        		 if(questiontype==1)$dialog.find(".type").last().text("多选");
+        		 if(questiontype==2)$dialog.find(".type").last().text("填空");
+        	 }
+         });
+         
+		}
+	});
+}
 /**
  * 更改新闻前端显示状态。
  * @version

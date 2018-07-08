@@ -48,7 +48,7 @@
                 <db.jdbcDriver>com.mysql.jdbc.Driver</db.jdbcDriver>
                 <db.connectionURL>
                 	<!-- jdbc:mysql://localhost:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8 -->
-                	jdbc:mysql://202.115.103.23:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
+                	jdbc:mysql://192.168.136.207:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
                 </db.connectionURL>
                 <db.username>root</db.username>
                 <db.password>a123456</db.password>
