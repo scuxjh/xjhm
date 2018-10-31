@@ -163,7 +163,7 @@ body {
 			</FORM>
 		</div>
 	</div>
-	<div class="login_footer">SCU 版权信息 2017</div>
+	<div class="login_footer">Copyright &copy; 2018, 四川大学计算机学院. All rights reserved.</div>
 	<script>
     $(function(){
      	var btnLogin = $('#loginBtn');
