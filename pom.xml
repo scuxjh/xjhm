@@ -47,8 +47,8 @@
                 <hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
                 <db.jdbcDriver>com.mysql.jdbc.Driver</db.jdbcDriver>
                 <db.connectionURL>
-                	<!-- jdbc:mysql://localhost:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8 -->
-                	jdbc:mysql://192.168.136.207:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
+                
+                jdbc:mysql://192.168.136.100:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
                 </db.connectionURL>
                 <db.username>root</db.username>
                 <db.password>a123456</db.password>

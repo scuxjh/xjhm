@@ -5,7 +5,7 @@
 <html lang="zh-CN">
     <head>
         <%--<%@include file="/commons/metas.jsp"%>--%>
-        <title>肖家河项目-后端管理系统</title>
+        <title>社区民主问政平台-后端管理系统</title>
         <%@include file="/commons/statics.jsp"%>
 
 <style type="text/css">
@@ -130,7 +130,7 @@ body {
 	<div class="head login"></div>
 	<div class="logo">
 		<img src="images/background/logo.png" />
-		<div>肖家河社区民主问政平台</div>
+		<div>社区民主问政平台</div>
 	</div>
 	<div class="login_con">
 		<div class="login_con_L">

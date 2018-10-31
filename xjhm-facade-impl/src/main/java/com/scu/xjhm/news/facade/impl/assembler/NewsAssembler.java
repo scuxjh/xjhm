@@ -16,8 +16,6 @@ import com.scu.xjhm.common.core.utils.DataUtils;
 
 public class NewsAssembler {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(NewsAssembler.class);
-	
 	public static NewsDTO  toDTO(News  news){
 		if (news == null) {
 			return null;
@@ -66,7 +64,7 @@ public class NewsAssembler {
 	 	News result = null;
 	 	Long id = newsDTO.getId();
 	 	if(DataUtils.isNullOrEmpty(id)){
-	 		LOGGER.info("1111,in toEntity, isNullOrEmpty...");
+	 		//LOGGER.info("1111,in toEntity, isNullOrEmpty...");
 	 		result = new News();
 	 	}else{
 	 		result = News.get(News.class, id);

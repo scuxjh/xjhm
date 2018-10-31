@@ -63,6 +63,8 @@
                     	<label class="col-md-2 control-label" for="name">问卷内容:</label>
                         	<div class="col-md-10">
                             	
+                            	 <textarea class="form-control" name="questionContent" id="questionContentID" rows="10" value="" placeholder="";"></textarea>
+                            	 <span class="required">*</span>
                             	<!-- 加载summernote组件的Div，name和id必须为“summernoteDiv” 20170910pm -->
                             	<!--题目显示区域---------------------------------------------------------------------------------------------------------------------------------------->
                                  <div class=" all_660">
@@ -79,18 +81,22 @@
     </ul>
     <div class="xxk_conn"> 
       <!--单选----------------------------------------------------------------------------------------------------------------------------------------->
-      <div class="xxk_xzqh_box dxuan " id="jsd">
+      <div class="xxk_xzqh_box dxuan ">
         <textarea name="" cols="" rows=""  class="input_wenbk btwen_text btwen_text_dx"    onblur="if(!this.value)this.value='单选题目'" onclick="if(this.value&&this.value=='单选题目' )  this.value=''"></textarea>
         <div class="title_itram" id="text">
           <div class="kzjxx_iteam" >
             <input name="" type="radio" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-            
+            <label>
+              <input name="" type="checkbox" value="" class="fxk">
+              <span>可填空</span></label>
             <a href="javascript:void(0);" class="del_xm">删除</a> </div>
           <div class="kzjxx_iteam">
             <input name="" type="radio" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-            
+            <label>
+              <input name="" type="checkbox" value="" class="fxk">
+              <span>可填空</span></label>
             <a href="javascript:void(0);" class="del_xm">删除</a> </div>
         </div>
         <a href="javascript:void(0)" class="zjxx">增加选项</a> 
@@ -106,11 +112,17 @@
           <div class="kzjxx_iteam">
             <input name="" type="checkbox" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
+            <label>
+              <input name="" type="checkbox" value="" class="fxk">
+              <span>可填空</span></label>
             <a href="javascript:void(0);" class="del_xm">删除</a> </div>
           <div class="kzjxx_iteam">
             <input name="" type="checkbox" value="" class="dxk">
             <input name="" type="text" class="input_wenbk" value="选项" onblur="if(!this.value)this.value='选项'" onclick="if(this.value&&this.value=='选项' )  this.value=''">
-           <a href="javascript:void(0);" class="del_xm">删除</a> </div>
+            <label>
+              <input name="" type="checkbox" value="" class="fxk">
+              <span>可填空</span></label>
+            <a href="javascript:void(0);" class="del_xm">删除</a> </div>
         </div>
         <a href="javascript:void(0)" class="zjxx">增加选项</a> 
         
