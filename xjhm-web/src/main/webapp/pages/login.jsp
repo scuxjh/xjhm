@@ -114,9 +114,9 @@ body {
 .login_footer {
 	clear: both;
 	margin: 8% auto 0;
-	width: 300px;
+	width: 600px;
 	color: inherit;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 200;
     line-height: 2.14286;
 }
