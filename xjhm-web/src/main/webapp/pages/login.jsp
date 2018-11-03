@@ -114,9 +114,9 @@ body {
 .login_footer {
 	clear: both;
 	margin: 8% auto 0;
-	width: 300px;
+	width: 600px;
 	color: inherit;
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 200;
     line-height: 2.14286;
 }
@@ -163,7 +163,7 @@ body {
 			</FORM>
 		</div>
 	</div>
-	<div class="login_footer">SCU 版权信息 2017</div>
+	<div class="login_footer">Copyright &copy; 2018, 四川大学计算机学院. All rights reserved.</div>
 	<script>
     $(function(){
      	var btnLogin = $('#loginBtn');
