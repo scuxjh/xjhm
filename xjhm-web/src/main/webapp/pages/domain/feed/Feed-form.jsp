@@ -24,10 +24,10 @@
                 <label class="col-md-2 control-label" for="name">是否前台显示:</label><!-- 默认为否 value=0 -->
                 <div class="col-md-2">
 					<label class="radio-inline">
-                    	<input type="radio" id="display-1" name="display" value="1" >是
+                    	<input type="radio" id="display-1" name="display" value="1" checked="checked">是
                     </label>
 		            <label class="radio-inline">
-        		    	<input type="radio" id="display-0" name="display" value="0" checked="checked" >否
+        		    	<input type="radio" id="display-0" name="display" value="0"  >否
                 	</label>
             
                     <input type='hidden' class="hiddenRadio" name='display' id='displayID' value="0" >

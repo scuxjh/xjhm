@@ -10,7 +10,6 @@
             <div style="display:block; width:100%;height:32px;">
             	<div class="btn-group buttons" style="float:right;">
 		        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-		      		<button type="button" class="btn btn-success save" id="saveBtn">保存</button>
 		    	</div>
 		    </div>
             <div class="modal-body" style="padding-left:45px; padding-right:65px;padding-top:0px;display:block;">

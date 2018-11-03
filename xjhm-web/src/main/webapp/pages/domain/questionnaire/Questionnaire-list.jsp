@@ -53,7 +53,6 @@ $(function (){
 	                         		}
 	                         	}}
                                //col_sm是什么？index.jsp中的变量为什么可以直接使用
-                               ,{ title: '发布人员', name: 'adminId', width: col_sm}
                                ,{ title: '创建时间', name: 'createTime', width: col_md}
 	                           ,{ title: '发布时间', name: 'startTime', width: col_md}
 	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
@@ -337,29 +336,38 @@ var showquestionanswer=function($dialog,questionnaireid){
 	var startt="<div class='movie_box' id=''><ul class='wjdc_list'></ul></div>";
 	var questionstartt="<div class='question_box' id=''><ul class='question_list'></ul></div>";
 	var xxiang="<li><label><span class='xxwenzi' id=''></span></label></li>";
+	//定位第几个反馈者
+	var feedNum = -1;
+	//将投票答案存入a数组
+	var a =new Array();
 	$.get(recordurl).done(function(json){
 		json=json.data;
 		for(var i in json){
 			var voterecord=json[i];
 			var recordanswer=voterecord.problemChoice;
 			//alert(recordanswer);
-			//将投票答案存入a数组
-			var a =new Array();
-			a=recordanswer.split(";");
+			
+			a[i]=recordanswer;
+			
+			//answer[i] = a;
 			$dialog.find(".all_answer").append(startt);
             $dialog.find(".wjdc_list").last().append(title);
-            $dialog.find(".anmb").last().text(i+1);
+            $dialog.find(".anmb").last().text(Number(i)+1);
             $dialog.find(".votetime").last().text(voterecord.voteTime);
+            //执行votetitleurl之前出现上面的循环操作已经执行完的情况
          $.get(votetitleurl).done(function(votejson){
+        	 feedNum++;
+        	 var b =new Array();
+        	 b=a[feedNum].split(";");
         	 votejson=votejson.data;
         	 for(var index in votejson){
         		 var votetitle=votejson[index];
         		 var questiontype=votetitle.questionType;
-        		 $dialog.find(".wjdc_list").last().append(questionstartt);
+        		 $dialog.find(".wjdc_list").eq(feedNum).append(questionstartt);
         		 $dialog.find(".question_list").last().append(biaoti).append(xxiang);
         		 $dialog.find(".nmb").last().text(votetitle.questionNum);
         		 $dialog.find(".btwenzi").last().text(votetitle.questionTitle);
-        		 $dialog.find(".xxwenzi").last().text(a[index]);
+        		 $dialog.find(".xxwenzi").last().text(b[index]);
         		 if(questiontype==0)$dialog.find(".type").last().text("单选");
         		 if(questiontype==1)$dialog.find(".type").last().text("多选");
         		 if(questiontype==2)$dialog.find(".type").last().text("填空");
