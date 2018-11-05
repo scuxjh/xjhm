@@ -32,7 +32,7 @@ $(function (){
 	                    ],
 	                url: contextPath+"/news/pageJson.action",
 	                columns: [
-	                     	    { title: '标题', name: 'newsTitle', width: col_md}
+	                     	    { title: '标题', name: 'newsTitle', width: col_lg}
                                ,{ title: '所属类别', name: 'categoryName', width: col_sm}
                                ,{ title: '是否前台显示', name: 'display', width: col_md, render: function(rowdata, name, index){
 	                         		var display = rowdata.display;
@@ -44,8 +44,8 @@ $(function (){
 	                         			return forbidden;
 	                         		}
 	                         	}}
-                               ,{ title: '发布人员', name: 'adminName', width: col_sm}
-                               ,{ title: '创建时间', name: 'createTime', width: col_md}
+                               //,{ title: '发布人员', name: 'adminName', width: col_sm}
+                               //,{ title: '创建时间', name: 'createTime', width: col_md}
 	                           ,{ title: '发布时间', name: 'startTime', width: col_md}
 	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
 	                                 {

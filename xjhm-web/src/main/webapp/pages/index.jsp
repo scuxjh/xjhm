@@ -20,7 +20,7 @@
 	<div class="g-head">
 	    <nav class="navbar navbar-default">
 	        <a class="navbar-brand" href="#">
-	        	<img src="${contextPath}/images/global.logo.png"/>
+	        	<!-- <img src="${contextPath}/images/global.logo.png"/> -->
 	        	<span style="font-weight:800;">社区民主问政互动平台-后端管理系统</span>
 	        </a>
 	        <div class="collapse navbar-collapse navbar-ex1-collapse">
