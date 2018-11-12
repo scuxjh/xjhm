@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.apache.commons.io.FileUtils;
 import org.dayatang.utils.Page;
 
 import com.mysql.jdbc.StringUtils;
+import com.scu.xjhm.common.core.utils.DateUtils;
 import com.scu.xjhm.news.facade.NewsFacade;
 import com.scu.xjhm.news.facade.dto.NewsDTO;
 
@@ -58,12 +60,14 @@ public class NewsController {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 * @version
+	 * 20181110
+	 * 	   1.上传的媒体文件保存到本地磁盘.
 	 * 20170910pm
 	 *     1.new.
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-	public InvokeResult uploadImage(HttpServletRequest request) throws IllegalStateException, IOException{
+	@RequestMapping(value = "/uploadMedia", method = RequestMethod.POST)
+	public InvokeResult uploadMedia(HttpServletRequest request) throws IllegalStateException, IOException{
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
 		// 判断 request 是否有文件上传,即多部分请求
@@ -80,19 +84,30 @@ public class NewsController {
 		String myFileName = f.getOriginalFilename();
 		// 如果名称不为“”,说明该文件存在，否则说明该文件不存在
 		if(StringUtils.isNullOrEmpty(myFileName))  return InvokeResult.failure("无文件上传");
+		//20181111pm
+		int dotIndex = myFileName.lastIndexOf(".");
+		myFileName = myFileName.substring(0, dotIndex) + DateUtils.getTimeInMillis() + myFileName.substring(dotIndex);
+		LOGGER.info("renamed myFileName: " + myFileName);
 		// 定义上传路径
-		String path = "E:\\TDDOWNLOAD\\" + myFileName;
-		String realPath = request.getSession().getServletContext().getRealPath("uploadImage");
-		LOGGER.info("the realPath of uploadImage:"+realPath);
-		File localFile = new File(realPath);
+		String path = "d:\\upload\\uploadMedia\\";
+		String realPath = request.getSession().getServletContext().getRealPath("uploadMedia");
+		LOGGER.info("the realPath of uploadImage:" + realPath);
+		
+		File localFile = new File(path);
 		if(!localFile.exists()) localFile.mkdir();
-		localFile = new File(realPath + "/" + myFileName);
+		File localFile2 = new File(realPath);
+		if(!localFile2.exists()) localFile2.mkdir();
+		localFile = new File(path + "/" + myFileName);
+		localFile2 = new File(realPath + "/" + myFileName);
 		f.transferTo(localFile);
+//		f.transferTo(localFile2);//incorrect.
+		FileUtils.copyFile(localFile, localFile2);
 		Map resultMap = new HashMap();
-		String imageUrl = request.getContextPath()+"/uploadImage/"+myFileName;
-		LOGGER.info("imageUrl:"+imageUrl);
+		//String mediaUrl = request.getContextPath()+"/uploadMedia/"+myFileName;
+		String mediaUrl = "/uploadMedia/" + myFileName;//20181111pm
+		LOGGER.info("mediaUrl:" + mediaUrl);
 		resultMap.put("message", "上传成功。");
-		resultMap.put("imageUrl", imageUrl);
+		resultMap.put("mediaUrl", mediaUrl);
 		return InvokeResult.success(resultMap);
 	}
 	

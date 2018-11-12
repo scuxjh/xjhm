@@ -182,7 +182,7 @@ var addNews = function($grid, newsId){
 	    				//使用FormData对象添加字段方式上传文件.20170910pm
 	    				var formData = new FormData();
 	    				formData.append("file", files[0]);
-	    				var theUrl = contextPath + "/news/uploadImage.action";
+	    				var theUrl = contextPath + "/news/uploadMedia.action";
 	    				$.ajax({
 	    				    url: theUrl,
 	    				    type: 'POST',
@@ -195,10 +195,11 @@ var addNews = function($grid, newsId){
 	    				    success: function (responseStr) {
 	    				    	if(responseStr.success){
 	    				    		console.log("上传文件成功。");
-	    				    		var imageUrl = contextPath + responseStr.data.imageUrl;
-	    				    		console.log("responseStr.data.imageUrl:"+imageUrl);
+	    				    		//var mediaUrl = contextPath + responseStr.data.mediaUrl;
+	    				    		var mediaUrl = responseStr.data.mediaUrl;
+	    				    		console.log("responseStr.data.mediaUrl:" + mediaUrl);
 	    				    		console.log("responseStr.data.message:"+responseStr.data.message);
-	    				    		$content.summernote('insertImage', imageUrl);
+	    				    		$content.summernote('insertImage', mediaUrl);
 	    				    	}
 	    				    },
 	    				    error: function () {console.log("请求服务器失败。");}
