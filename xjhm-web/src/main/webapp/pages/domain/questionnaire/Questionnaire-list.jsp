@@ -207,6 +207,7 @@ var addquestion = function($grid, questionId){
             );
     		
     		//console.log("1111,in addquestion,questionId:"+questionId);
+    		//修改
     		if(questionId) {
     			$dialog.find(".modal-title").html("<b>修改</b>");
     			appendData2Form("Questionnaire", $dialog, questionId);

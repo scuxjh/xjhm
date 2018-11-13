@@ -1,7 +1,7 @@
 
 var showquestionnaire=function($dialog ,id,mode){
 	var Titleurl = contextPath+"/VoteTitle/getbyqnid/" + id + ".action";
-	var biaoti="<li><div class='tm_btitlt'><i class='nmb'></i>. <i class='btwenzi'></i></div></li>";
+	var biaoti="<li><div class='tm_btitlt'><i class='nmb' id='revise'></i>. <i class='btwenzi'></i></div></li>";
 	var danxxiang="<li><label><input name='a' type='radio' ><span class='xxwenzi' id=''></span></label></li>";
 	var duoxxiang="<li><label><input name='a' type='checkbox' ><span class='xxwenzi' id=''></span></label></li>";
 	var danxdata="<div class='dx_box' data-t='0'></div>";
@@ -248,11 +248,11 @@ var initQuestionnaire=function($dialog){
 			  $(".kzqy_czbut").remove(); 
 			  // 			  
 		});
+
 		
 		//完成编辑（编辑）
 		var x=0;
-		$(".swcbj_but").live("click", function() {   
-			//alert("sdkfe");
+		$(".swcbj_but").live("click", function() { 
 			var bianji=$(this).parent(".bjqxwc_box");
 			//编辑修改
 		var jcxxxx = bianji.parent(".dx_box");
@@ -276,14 +276,15 @@ var initQuestionnaire=function($dialog){
 			var duoxdata="<div class='dx_box' data-t='1'></div>";
 			var tkdata="<div class='dx_box' data-t='2'></div>";
 			var startt="<div class='movie_box'><ul class='wjdc_list'></ul></div>";
+			var revisenum=$(".yd_box").find(".nmb").last().text();
 			$(".yd_box").append(startt);
-			
 			//$("#first").prepend(biaoti);
 			for(var i=0;i<sz.length;i++){
 				//添加标题
 				if(!i){
 					$(".yd_box").find(".wjdc_list").last().append(biaoti);
-					$(".yd_box").find(".nmb").last().text(x);
+					var biaoti = $(".yd_box").find(".nmb");
+					biaoti.last().text(biaoti.eq(-2).text()*1+1);
 				    $(".yd_box").find(".btwenzi").last().text(sz[i]);
 				    if(sz.length==1) 
 				    	$(".yd_box").find(".wjdc_list").last().append("<li><label><textarea class='input_wenbk btwen_text btwen_text_dx'> </textarea></label></li>");
