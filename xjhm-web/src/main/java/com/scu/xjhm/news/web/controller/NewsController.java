@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.apache.commons.io.FileUtils;
 import org.dayatang.utils.Page;
 
 import com.mysql.jdbc.StringUtils;
@@ -89,25 +88,31 @@ public class NewsController {
 		myFileName = myFileName.substring(0, dotIndex) + DateUtils.getTimeInMillis() + myFileName.substring(dotIndex);
 		LOGGER.info("renamed myFileName: " + myFileName);
 		// 定义上传路径
+		/*
 		String path = "d:\\upload\\uploadMedia\\";
 		String realPath = request.getSession().getServletContext().getRealPath("uploadMedia");
 		LOGGER.info("the realPath of uploadImage:" + realPath);
-		
 		File localFile = new File(path);
 		if(!localFile.exists()) localFile.mkdir();
 		File localFile2 = new File(realPath);
 		if(!localFile2.exists()) localFile2.mkdir();
 		localFile = new File(path + "/" + myFileName);
 		localFile2 = new File(realPath + "/" + myFileName);
+		*/
+		String realPath = "/uploadMedia";
+		File localFile = new File(realPath);
+		if(!localFile.exists()) localFile.mkdir();
+		String myFilePath = realPath + "/" + myFileName;
+		localFile = new File(myFilePath);
+		
 		f.transferTo(localFile);
-//		f.transferTo(localFile2);//incorrect.
-		FileUtils.copyFile(localFile, localFile2);
+		//FileUtils.copyFile(localFile, localFile2);
 		Map resultMap = new HashMap();
 		//String mediaUrl = request.getContextPath()+"/uploadMedia/"+myFileName;
-		String mediaUrl = "/uploadMedia/" + myFileName;//20181111pm
-		LOGGER.info("mediaUrl:" + mediaUrl);
+		//String mediaUrl = "/uploadMedia/" + myFileName;//20181111pm
+		LOGGER.info("mediaUrl:" + myFilePath);
 		resultMap.put("message", "上传成功。");
-		resultMap.put("mediaUrl", mediaUrl);
+		resultMap.put("mediaUrl", myFilePath);
 		return InvokeResult.success(resultMap);
 	}
 	

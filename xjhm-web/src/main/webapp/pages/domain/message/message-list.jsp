@@ -32,7 +32,11 @@ $(function (){
 	                    ],
 	                url: contextPath+"/news/pageJson.action",
 	                columns: [
-	                     	    { title: '留言内容', name: 'audioFilepath', width: col_md}
+	                     	    { title: '留言内容', name: 'audioFilepath', width: col_lg, render: function(fowdata, name, index){
+	                     	    	var h = "<audio src='/uploadMessage/孔德仕1520181108212528.mp3' controls='controls' style='width:200px'></audio>";
+	                     	    	return h;
+	                     	    	}
+	                     	    }
                                ,{ title: '姓名', name: 'name', width: col_sm}
                                ,{ title: '联系方式', name: 'phoneNum', width: col_sm}
                                ,{ title: '留言时间', name: 'createTime', width: col_md}

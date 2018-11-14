@@ -129,21 +129,51 @@
         	<artifactId>commons-io</artifactId>  
         	<version>2.5</version>  
     	</dependency>
+    	<!-- 
+		<dependency>
+    		<groupId>org.eclipse.jetty</groupId>
+    		<artifactId>jetty-maven-plugin</artifactId>
+    		<version>9.4.13.v20181111</version>
+    		<type>maven-plugin</type>
+    	</dependency>
+		-->
     </dependencies>  
     <build> 
         <plugins> 
-            <!-- 配置加入jetty服务器，开发时我们一般使用jetty服务器 -->  
+            <!-- 配置加入jetty服务器，开发时我们一般使用jetty服务器 --> 
             <plugin> 
                 <groupId>org.mortbay.jetty</groupId>  
-                <artifactId>jetty-maven-plugin</artifactId>  
-                <configuration> 
+                <!-- <groupId>org.eclipse.jetty</groupId> -->
+                <artifactId>jetty-maven-plugin</artifactId>
+                <!-- <version>9.4.12.v20180830</version> -->
+                <!-- <version>8.1.16.v20140903</version> -->
+                <!-- <version>9.4.13.v20181111</version> -->
+                <configuration>
+                	<encoding>UTF-8</encoding>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
                     <!-- 设置扫描target/classes内部文件变化时间间隔 -->  
                     <!--<scanIntervalSeconds>10</scanIntervalSeconds>-->  
                     <webApp> 
-                        <contextPath>/</contextPath> 
-                    </webApp> 
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <!-- 20181112 start 20181112 end -->
+                    <contextHandlers>
+			            	<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">  
+			                	<contextPath>/uploadMedia</contextPath>
+			                	<resourceBase>d://uploadMedia</resourceBase>
+			                	<!-- <resourceBase>d://upload//uploadMedia</resourceBase> -->
+			                	<!-- <resourceBase>D:\upload\uploadMedia</resourceBase> -->
+			                	<!-- <resourceBase>D:/upload/uploadMedia</resourceBase> -->
+			            	</contextHandler>
+			            	<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">  
+			                	<contextPath>/uploadMessage</contextPath>
+			                	<resourceBase>d://uploadMessage</resourceBase>
+			            	</contextHandler>
+			         </contextHandlers>
                 </configuration> 
-            </plugin> 
+            </plugin>
         </plugins> 
     </build> 
 </project>

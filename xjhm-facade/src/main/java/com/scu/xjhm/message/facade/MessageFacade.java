@@ -1,9 +1,11 @@
-package com.scu.xjhm.facade;
+package com.scu.xjhm.message.facade;
 
 import java.util.List;
+
 import org.dayatang.utils.Page;
 import org.openkoala.koala.commons.InvokeResult;
-import com.scu.xjhm.facade.dto.*;
+
+import com.scu.xjhm.message.facade.dto.MessageDTO;
 
 public interface MessageFacade {
 

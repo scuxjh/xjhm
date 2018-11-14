@@ -47,8 +47,13 @@
                 <hibernate.dialect>org.hibernate.dialect.MySQL5Dialect</hibernate.dialect>
                 <db.jdbcDriver>com.mysql.jdbc.Driver</db.jdbcDriver>
                 <db.connectionURL>
+                <!-- jdbc:mysql://192.168.136.100:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8 --><!-- 20181031nt -->
+                <!-- 20181031nt
+                jdbc:mysql://202.115.103.18:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
+                 -->
+                <!-- local db -->
+                jdbc:mysql://localhost:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
                 
-                jdbc:mysql://192.168.136.100:3306/xjh?useUnicode=true&amp;characterEncoding=UTF-8
                 </db.connectionURL>
                 <db.username>root</db.username>
                 <db.password>a123456</db.password>
@@ -663,6 +668,13 @@
                 <artifactId>xbean-spring</artifactId>
                 <version>3.13</version>
             </dependency>
+			<!-- 20181113 -->
+			<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.13.v20181111</version>
+				<type>maven-plugin</type>
+			</dependency>
 
         </dependencies>
 
@@ -770,6 +782,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <!-- 20181114
         <repository>
             <id>dayatang-releases</id>
             <url>http://nexus.dayatang.org:8083/content/repositories/releases</url>
@@ -790,5 +803,6 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+         -->
     </repositories>
 </project>

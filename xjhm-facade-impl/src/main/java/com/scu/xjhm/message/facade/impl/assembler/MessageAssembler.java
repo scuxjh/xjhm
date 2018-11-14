@@ -1,12 +1,12 @@
-package com.scu.xjhm.facade.impl.assembler;
+package com.scu.xjhm.message.facade.impl.assembler;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import com.scu.xjhm.common.core.utils.DataUtils;
-import com.scu.xjhm.facade.dto.*;
-import com.scu.xjhm.message.core.domain.*;
+import com.scu.xjhm.message.core.domain.Message;
+import com.scu.xjhm.message.facade.dto.MessageDTO;
 
 public class MessageAssembler {
 	

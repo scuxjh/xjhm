@@ -86,7 +86,8 @@
         var col_xs = "30px";//超小
         var col_sm = "70px";//小
         var col_md = "100px";//中等
-        var col_lg = "120px";//大
+        //var col_lg = "120px";//大
+        var col_lg = "200px";//大 20181114
 
         $(function(){
             var roleName = $('#roles').html();

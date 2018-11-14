@@ -195,8 +195,8 @@ var addNews = function($grid, newsId){
 	    				    success: function (responseStr) {
 	    				    	if(responseStr.success){
 	    				    		console.log("上传文件成功。");
-	    				    		//var mediaUrl = contextPath + responseStr.data.mediaUrl;
-	    				    		var mediaUrl = responseStr.data.mediaUrl;
+	    				    		var mediaUrl = contextPath + responseStr.data.mediaUrl;
+	    				    		//var mediaUrl = responseStr.data.mediaUrl;
 	    				    		console.log("responseStr.data.mediaUrl:" + mediaUrl);
 	    				    		console.log("responseStr.data.message:"+responseStr.data.message);
 	    				    		$content.summernote('insertImage', mediaUrl);

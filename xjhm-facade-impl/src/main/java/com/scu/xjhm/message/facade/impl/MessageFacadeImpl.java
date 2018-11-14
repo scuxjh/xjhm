@@ -1,4 +1,4 @@
-package com.scu.xjhm.facade.impl;
+package com.scu.xjhm.message.facade.impl;
 
 import java.util.HashSet;
 import java.util.List;
@@ -15,12 +15,12 @@ import org.dayatang.querychannel.QueryChannelService;
 import org.openkoala.koala.commons.InvokeResult;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.scu.xjhm.facade.dto.*;
-import com.scu.xjhm.facade.impl.assembler.MessageAssembler;
-import com.scu.xjhm.facade.MessageFacade;
 import com.scu.xjhm.application.MessageApplication;
 import com.scu.xjhm.common.core.utils.DataUtils;
-import com.scu.xjhm.message.core.domain.*;
+import com.scu.xjhm.message.core.domain.Message;
+import com.scu.xjhm.message.facade.MessageFacade;
+import com.scu.xjhm.message.facade.dto.MessageDTO;
+import com.scu.xjhm.message.facade.impl.assembler.MessageAssembler;
 
 @Transactional(value = "transactionManager_security")
 @Named

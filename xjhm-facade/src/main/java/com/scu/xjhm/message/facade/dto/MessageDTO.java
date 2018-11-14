@@ -1,4 +1,4 @@
-package com.scu.xjhm.facade.dto;
+package com.scu.xjhm.message.facade.dto;
 
 import java.util.Date;
 
