@@ -99,20 +99,21 @@ public class NewsController {
 		localFile = new File(path + "/" + myFileName);
 		localFile2 = new File(realPath + "/" + myFileName);
 		*/
-		String realPath = "/uploadMedia";
+		//String realPath = "/uploadMedia";
+		String realPath = "d:\\upload\\uploadMedia\\";//20181114
 		File localFile = new File(realPath);
 		if(!localFile.exists()) localFile.mkdir();
-		String myFilePath = realPath + "/" + myFileName;
+		String myFilePath = realPath + myFileName;
 		localFile = new File(myFilePath);
 		
 		f.transferTo(localFile);
 		//FileUtils.copyFile(localFile, localFile2);
 		Map resultMap = new HashMap();
 		//String mediaUrl = request.getContextPath()+"/uploadMedia/"+myFileName;
-		//String mediaUrl = "/uploadMedia/" + myFileName;//20181111pm
-		LOGGER.info("mediaUrl:" + myFilePath);
+		String mediaUrl = "/uploadMedia/" + myFileName;//20181111pm
+		LOGGER.info("mediaUrl:" + mediaUrl);
 		resultMap.put("message", "上传成功。");
-		resultMap.put("mediaUrl", myFilePath);
+		resultMap.put("mediaUrl", mediaUrl);
 		return InvokeResult.success(resultMap);
 	}
 	

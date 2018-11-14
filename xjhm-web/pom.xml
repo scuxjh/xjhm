@@ -162,8 +162,8 @@
                     <contextHandlers>
 			            	<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">  
 			                	<contextPath>/uploadMedia</contextPath>
-			                	<resourceBase>d://uploadMedia</resourceBase>
-			                	<!-- <resourceBase>d://upload//uploadMedia</resourceBase> -->
+			                	<resourceBase>d://upload//uploadMedia</resourceBase>
+			                	<!-- <resourceBase>d://uploadMedia</resourceBase> -->
 			                	<!-- <resourceBase>D:\upload\uploadMedia</resourceBase> -->
 			                	<!-- <resourceBase>D:/upload/uploadMedia</resourceBase> -->
 			            	</contextHandler>
