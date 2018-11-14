@@ -24,6 +24,7 @@ $(function (){
 	         return $grid_news.grid({
 	                identity: "id",
 	                lockWidth: true,
+	                minheight: 1400,
 	                buttons: [
 	                        {content: '<ks:hasSecurityResource identifier="newsAdd"><button class="btn btn-primary" type="button" id="taskManagerAddBtn"><span class="glyphicon glyphicon-plus"><span>新增</button></ks:hasSecurityResource>', action: 'add'},
 	                        {content: '<ks:hasSecurityResource identifier="newsUpdate"><button class="btn btn-success" type="button"><span class="glyphicon glyphicon-edit"><span>修改</button></ks:hasSecurityResource>', action: 'modify'},
@@ -246,8 +247,8 @@ var addNews = function($grid, newsId){
        1.new.
  */
 var viewNews = function(id){
-	//var url = contextPath + "/pages/common/template/ModalDialog-template.jsp";
-	var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
+	var url = contextPath + "/pages/common/template/ModalDialog-template-full.jsp";
+	//var url = contextPath + "/pages/common/template/ModalDialog-template-lg.jsp";
     $.get(url).done(function(html){
     	var $dialog = $(html);
     	//$dialog.find(".modal-title").html("查看");
