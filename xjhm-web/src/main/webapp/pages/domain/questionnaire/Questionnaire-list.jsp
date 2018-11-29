@@ -55,7 +55,7 @@ $(function (){
                                //col_sm是什么？index.jsp中的变量为什么可以直接使用
                                ,{ title: '创建时间', name: 'createTime', width: col_md}
 	                           ,{ title: '发布时间', name: 'startTime', width: col_md}
-	                           ,{ title: '操作', width: col_xs, render: function (rowdata, name, index)
+	                           ,{ title: '操作', width: "40", render: function (rowdata, name, index)
 	                                 {
 	                                     var param = '"' + rowdata.id + '"';
 	                                     //点击链接时返回js函数viewquestion
@@ -150,7 +150,7 @@ $(function (){
                 	$grid.message({type: 'error', content: result.errorMessage});
                 }
 	    	});
-	    }
+	    } 
 	};//end of PageLoader.
 	//PageLoader.initDict();//20150704 am
 	//PageLoader.initSearchPanel();
@@ -203,7 +203,7 @@ var addquestion = function($grid, questionId){
     		.on(
     			
             	//remove() 方法删除被选元素及其子元素。
-                "hidden.bs.modal", function(){$dialog.remove();}
+                "hidden.bs.modal", function(){$dialog.find('.zjxx').remove();$dialog.remove();}
             );
     		
     		//console.log("1111,in addquestion,questionId:"+questionId);
@@ -221,9 +221,11 @@ var addquestion = function($grid, questionId){
                        if(result.success ){
                     	   addvotetitle($dialog );
                     	   $dialog.modal('hide');
-                    	  // $dialog.refresh();
+                    	   //$dialog.refresh();
                            $grid.getGrid().refresh();
                            $grid.message({type: 'success', content: '操作成功'});
+                           //top.location.reload()
+                          // window.location.reload();
                         }else{
                            $dialog.find('.modal-content').message({type: 'error', content: result.errorMessage});
                         }

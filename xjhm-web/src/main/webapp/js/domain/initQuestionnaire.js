@@ -50,6 +50,7 @@ var initoption=function(question,a){
 
 
 var initQuestionnaire=function($dialog){
+	var index=0;
 	//$dialog.find('.btwen_text_dx').val("danxiang");
 	 $dialog.find(".btwen_text").val("题目");
 	 $dialog.find(".btwen_text_dx").val("单选题目");
@@ -225,6 +226,7 @@ var initQuestionnaire=function($dialog){
 		
 		//增加选项  
 		$(".zjxx").live("click", function() {  
+			index=index+1;
 			//$(".btwen_text_dx").val("单选题目hsha");
 			//$(".input_wenbk").val("单选题目hsha");
 			 var zjxx_html =  $(this).prev(".title_itram").children(".kzjxx_iteam").html();
