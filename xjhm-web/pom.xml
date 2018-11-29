@@ -169,7 +169,7 @@
 			            	</contextHandler>
 			            	<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">  
 			                	<contextPath>/uploadMessage</contextPath>
-			                	<resourceBase>d://uploadMessage</resourceBase>
+			                	<resourceBase>d://upload//uploadMessage</resourceBase>
 			            	</contextHandler>
 			         </contextHandlers>
                 </configuration> 

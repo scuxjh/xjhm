@@ -13,11 +13,11 @@ public class MessageDTO implements Serializable {
 	private int version;
 
 			
-		private Date createTime;
+		private String createTime;
 		
 		private Date createTimeEnd;
 				
-		private Date updateTime;
+		private String updateTime;
 		
 		private Date updateTimeEnd;
 				
@@ -55,11 +55,11 @@ public class MessageDTO implements Serializable {
 		
 			
 	
-	public void setCreateTime(Date createTime) { 
+	public void setCreateTime(String createTime) { 
 		this.createTime = createTime;
 	}
 
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return this.createTime;
 	}
 		
@@ -72,11 +72,11 @@ public class MessageDTO implements Serializable {
 	}
 			
 	
-	public void setUpdateTime(Date updateTime) { 
+	public void setUpdateTime(String updateTime) { 
 		this.updateTime = updateTime;
 	}
 
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return this.updateTime;
 	}
 		

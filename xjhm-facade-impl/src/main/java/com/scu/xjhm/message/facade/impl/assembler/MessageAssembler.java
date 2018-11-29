@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.scu.xjhm.common.core.utils.DataUtils;
+import com.scu.xjhm.common.core.utils.DateUtils;
 import com.scu.xjhm.message.core.domain.Message;
 import com.scu.xjhm.message.facade.dto.MessageDTO;
 
@@ -17,8 +18,8 @@ public class MessageAssembler {
     	MessageDTO result  = new MessageDTO();
 	    	result.setId (message.getId());
      	    	result.setVersion (message.getVersion());
-     	    	result.setCreateTime (message.getCreateTime());
-     	    	result.setUpdateTime (message.getUpdateTime());
+     	    	result.setCreateTime(DateUtils.convertDateToStr(message.getCreateTime(), DateUtils.DATE_TIME_PATTERN));
+     	    	result.setUpdateTime(DateUtils.convertDateToStr(message.getUpdateTime(), DateUtils.DATE_TIME_PATTERN));
      	    	result.setIsAudio (message.getIsAudio());
      	    	result.setAudioFilepath (message.getAudioFilepath());
      	    	result.setName (message.getName());
